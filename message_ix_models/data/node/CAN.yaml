@@ -1,0 +1,83 @@
+# Region code list
+#
+# - See message_data.tools.regions.
+# - The ISO 3166-1 alpha-3 codes are not defined in this file, but loaded from
+#   a copy of the ISO database, e.g. in pycountry.
+# - Among others, there are no assignments for:
+#   - ATA Antarctica
+#   - IOT British Indian Ocean Territory
+#   - SGS South Georgia
+
+World:
+  name: World
+  description: Maps Canada's provinces as regions in the model
+
+Canada:
+  name: Canada
+  parent: World
+  child: [Canada]
+
+Ontario:
+  name: Ontario
+  parent: Canada
+  child: [Ontario]
+
+Quebec:
+  name: Quebec
+  parent: Canada
+  child: [Quebec]
+
+BritishColumbia:
+  name: BritishColumbia
+  parent: Canada
+  child: [BritishColumbia]
+
+Alberta:
+  name: Alberta
+  parent: Canada
+  child: [Alberta]
+
+Saskatchewan:
+  name: Saskatchewan
+  parent: Canada
+  child: [Saskatchewan]
+
+Manitoba:
+  name: Manitoba
+  parent: Canada
+  child: [Manitoba]
+
+NovaScotia:
+  name: NovaScotia
+  parent: Canada
+  child: [NovaScotia]
+
+NewBrunswick:
+  name: NewBrunswick
+  parent: Canada
+  child: [NewBrunswick]
+
+PrinceEdwardIsland:
+  name: PrinceEdwardIsland
+  parent: Canada
+  child: [PrinceEdwardIsland]
+
+NewfoundlandandLabrador:
+  name: NewfoundlandandLabrador
+  parent: Canada
+  child: [NewfoundlandandLabrador]
+
+Yukon:
+  name: Yukon
+  parent: Canada
+  child: [Yukon]
+
+NorthwestTerritories:
+  name: NorthwestTerritories
+  parent: Canada
+  child: [NorthwestTerritories]
+
+Nunavut:
+  name: Nunavut
+  parent: Canada
+  child: [Nunavut]

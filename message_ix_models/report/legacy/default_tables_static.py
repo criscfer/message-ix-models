@@ -1,8 +1,11 @@
+# Default Tabling Functions -- without registry
+
 import numpy as np
 import pandas as pd
-
+from . import postprocess 
 from . import pp_utils
 
+#pp = postprocess.PostProcess(scen, ix=False)
 pp = None
 mu = None
 run_history = None
@@ -18,19 +21,6 @@ def return_func_dict():
     """Returns functions defined in script"""
     return func_dict
 
-
-def _register(func):
-    """Function to register reporting functions.
-
-    Parameters
-    ----------
-
-    func : str
-        Function name
-    """
-
-    func_dict[func.__name__] = func
-    return func
 
 
 def _pe_wCCSretro(tec, scrub_tec, group, inpfilter, units, share=1):
@@ -408,7 +398,7 @@ def _calc_scrubber_capacity(
 # -------------------
 
 
-@_register
+###
 def retr_extraction(units):
     """Resources: Extraction (Fossil + Uranium).
 
@@ -442,7 +432,7 @@ def retr_extraction(units):
     return df
 
 
-@_register
+###
 def retr_cumulative_extraction(units):
     """Resources: Extraction cumulative (Fossil + Uranium).
 
@@ -481,7 +471,7 @@ def retr_cumulative_extraction(units):
     return df
 
 
-@_register
+###
 def retr_remaining_resources(units):
     """Resources: Remaining (Fossil + Uranium).
 
@@ -517,7 +507,7 @@ def retr_remaining_resources(units):
     return df
 
 
-@_register
+###
 def retr_agri_dem(units):
     """Landuse: Agricultural Demand.
 
@@ -595,12 +585,13 @@ def retr_agri_dem(units):
             "commodity": ["Agricultural Demand|Non-Energy|Livestock|Other|Waste"],
         }
     )
+    
 
     df = pp_utils.make_outputdf(vars, units)
     return df
 
 
-@_register
+###
 def retr_agri_prd(units):
     """Landuse: Agricultural Production.
 
@@ -655,7 +646,7 @@ def retr_agri_prd(units):
     return df
 
 
-@_register
+###
 def retr_lnd_cvr(units):
     """Landuse: Land-Cover.
 
@@ -791,7 +782,7 @@ def retr_lnd_cvr(units):
     return df
 
 
-@_register
+###
 def retr_yield(units):
     """Landuse: Crop yield.
 
@@ -913,7 +904,7 @@ def retr_yield(units):
     return pd.concat(dfs, sort=True)
 
 
-@_register
+###
 def retr_fertilizer_use(units_nitrogen, units_phosphorus):
     """Landuse: Fertilizer usage.
 
@@ -952,7 +943,7 @@ def retr_fertilizer_use(units_nitrogen, units_phosphorus):
     return pd.concat(dfs, sort=True)
 
 
-@_register
+###
 def retr_fertilizer_int(units_nitrogen, units_phosphorus):
     """Landuse: Fertilizer usage.
 
@@ -1008,7 +999,7 @@ def retr_fertilizer_int(units_nitrogen, units_phosphorus):
     return pd.concat(dfs, sort=True)
 
 
-@_register
+###
 def retr_food_waste(units):
     """Landuse: Food waste.
 
@@ -1042,7 +1033,7 @@ def retr_food_waste(units):
     return df
 
 
-@_register
+###
 def retr_food_dem(units):
     """Landuse: Food demand.
 
@@ -1086,7 +1077,7 @@ def retr_food_dem(units):
     return df
 
 
-@_register
+###
 def retr_frst_dem(units):
     """Landuse: Forestry product demand.
 
@@ -1127,7 +1118,7 @@ def retr_frst_dem(units):
     return df
 
 
-@_register
+###
 def retr_frst_prd(units_residues, units_roundwood):
     """Landuse: Forestry product production.
 
@@ -1178,7 +1169,7 @@ def retr_frst_prd(units_residues, units_roundwood):
     return pd.concat(dfs, sort=True)
 
 
-@_register
+###
 def retr_fgases(
     units_SF6,
     conv_SF6,
@@ -1226,7 +1217,7 @@ def retr_fgases(
     return pd.concat(dfs, sort=True)
 
 
-@_register
+###
 def retr_pop(units):
     """Drivers: Population.
 
@@ -1258,7 +1249,7 @@ def retr_pop(units):
     return df
 
 
-@_register
+###
 def retr_demands_input(units):
     """Energy: Useful Energy input.
 
@@ -1363,7 +1354,7 @@ def retr_demands_input(units):
     return df
 
 
-@_register
+###
 def retr_demands_output(units):
     """Energy: Useful Energy output.
 
@@ -1391,7 +1382,7 @@ def retr_demands_output(units):
     return df
 
 
-@_register
+###
 def retr_price(
     units_CPrc_co2,
     units_CPrc_co2_outp,
@@ -1731,18 +1722,18 @@ def retr_price(
     # sums accross regions values.
     scale_tec = "Agricultural Production|Non-Energy|Crops"
 
-    vars["Agriculture|Non-Energy Crops and Livestock|Index"] = pp.retrieve_lu_price(
-        "Price|Agriculture|Non-Energy Crops and Livestock|Index", scale_tec
-    )
-    vars["Agriculture|Non-Energy Crops|Index"] = pp.retrieve_lu_price(
-        "Price|Agriculture|Non-Energy Crops|Index", scale_tec
-    )
+    #vars["Agriculture|Non-Energy Crops and Livestock|Index"] = pp.retrieve_lu_price(
+    #    "Price|Agriculture|Non-Energy Crops and Livestock|Index", scale_tec
+    #)
+    #vars["Agriculture|Non-Energy Crops|Index"] = pp.retrieve_lu_price(
+    #    "Price|Agriculture|Non-Energy Crops|Index", scale_tec
+    #)
     dfs.append(pp_utils.make_outputdf(vars, units_agri, glb=False))
 
     return pd.concat(dfs, sort=True)
 
 
-@_register
+###
 def retr_globiom_feedback(
     units_emi_CH4,
     units_emi_CO2,
@@ -1840,7 +1831,7 @@ def retr_globiom_feedback(
     return pd.concat(dfs, sort=True)
 
 
-@_register
+###
 def retr_kyoto(units):
     """Emissions: Kyoto Gases.
 
@@ -1902,18 +1893,18 @@ def retr_kyoto(units):
             ) * mu["conv_c2co2"]
 
             # Retrieve land-use related GHGs: CO2+CH4+N2O
-            land_use = pp.land_out(
-                lu_out_filter={"level": ["land_use_reporting"], "commodity": ["TCE"]},
-                units="Mt CO2eq/yr",
-            )
+            #land_use = pp.land_out(
+            #    lu_out_filter={"level": ["land_use_reporting"], "commodity": ["TCE"]},
+            #    units="Mt CO2eq/yr",
+            #)
 
-            vars["Kyoto Gases"] += co2 + ch4 + n2o + fgases + land_use
+            vars["Kyoto Gases"] += co2 + ch4 + n2o + fgases #+ land_use
 
     df = pp_utils.make_outputdf(vars, units)
     return df
 
 
-@_register
+###
 def retr_macro(units, conv_usd):
     """Macro: GDP and Consumption.
 
@@ -1946,7 +1937,7 @@ def retr_macro(units, conv_usd):
     return df
 
 
-@_register
+###
 def retr_cost(units, conv_usd):
     """Other: Cost nodal.
 
@@ -1967,7 +1958,7 @@ def retr_cost(units, conv_usd):
     return df
 
 
-@_register
+###
 def retr_othemi(var, units):
     """Emissions: Non-CO2/F-Gas emissions.
 
@@ -2934,7 +2925,7 @@ def retr_othemi(var, units):
     return df
 
 
-@_register
+###
 def retr_CO2_CCS(units_emi, units_ene):
     """Carbon sequestration.
 
@@ -3081,25 +3072,25 @@ def retr_CO2_CCS(units_emi, units_ene):
 
     vars["CCS|Industrial Processes"] = _CCS_cement
 
-    vars["Land Use"] = -pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Emissions|CO2|AFOLU|Negative"],
-        }
-    )
+    #vars["Land Use"] = -pp.land_out(
+    #    lu_out_filter={
+    #        "level": ["land_use_reporting"],
+    #        "commodity": ["Emissions|CO2|AFOLU|Negative"],
+    #    }
+    #)
 
-    vars["Land Use|Afforestation"] = -pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Emissions|CO2|AFOLU|Afforestation"],
-        }
-    )
+    #vars["Land Use|Afforestation"] = -pp.land_out(
+    #    lu_out_filter={
+    #        "level": ["land_use_reporting"],
+    #        "commodity": ["Emissions|CO2|AFOLU|Afforestation"],
+    #    }
+    #)
 
     df = pp_utils.make_outputdf(vars, units_emi)
     return df
 
 
-@_register
+###
 def retr_hfc(hfc_lst):
     """Emissions: HFCs.
 
@@ -3214,7 +3205,7 @@ def retr_hfc(hfc_lst):
     return pd.concat(dfs, sort=True)
 
 
-@_register
+###
 def retr_CO2emi(units_emi, units_ene_mdl):
     """Emissions: CO2.
 
@@ -3818,78 +3809,78 @@ def retr_CO2emi(units_emi, units_ene_mdl):
     # AFOLU
     # -----
 
-    vars["AFOLU"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Emissions|CO2|AFOLU"],
-        },
-        units=units_emi,
-    )
+    #vars["AFOLU"] = pp.land_out(
+    #    lu_out_filter={
+    #        "level": ["land_use_reporting"],
+    #        "commodity": ["Emissions|CO2|AFOLU"],
+    #    },
+    #    units=units_emi,
+    #)
 
-    vars["AFOLU|Afforestation"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Emissions|CO2|AFOLU|Afforestation"],
-        },
-        units=units_emi,
-    )
+    #vars["AFOLU|Afforestation"] = pp.land_out(
+    #    lu_out_filter={
+    #        "level": ["land_use_reporting"],
+    #        "commodity": ["Emissions|CO2|AFOLU|Afforestation"],
+    #    },
+    #    units=units_emi,
+    #)
 
-    vars["AFOLU|Agriculture"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Emissions|CO2|AFOLU|Agriculture"],
-        },
-        units=units_emi,
-    )
+    #vars["AFOLU|Agriculture"] = pp.land_out(
+    #    lu_out_filter={
+    #        "level": ["land_use_reporting"],
+    #        "commodity": ["Emissions|CO2|AFOLU|Agriculture"],
+    #    },
+    #    units=units_emi,
+    #)
 
-    vars["AFOLU|Deforestation"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Emissions|CO2|AFOLU|Deforestation"],
-        },
-        units=units_emi,
-    )
+    #vars["AFOLU|Deforestation"] = pp.land_out(
+    #    lu_out_filter={
+    #        "level": ["land_use_reporting"],
+    #        "commodity": ["Emissions|CO2|AFOLU|Deforestation"],
+    #    },
+    #    units=units_emi,
+    #)
 
-    vars["AFOLU|Forest Management"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Emissions|CO2|AFOLU|Forest Management"],
-        },
-        units=units_emi,
-    )
+    #vars["AFOLU|Forest Management"] = pp.land_out(
+    #    lu_out_filter={
+    #        "level": ["land_use_reporting"],
+    #        "commodity": ["Emissions|CO2|AFOLU|Forest Management"],
+    #    },
+    #    units=units_emi,
+    #)
 
-    vars["AFOLU|Negative"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Emissions|CO2|AFOLU|Negative"],
-        },
-        units=units_emi,
-    )
+    #vars["AFOLU|Negative"] = pp.land_out(
+    #    lu_out_filter={
+    #        "level": ["land_use_reporting"],
+    #        "commodity": ["Emissions|CO2|AFOLU|Negative"],
+    #    },
+    #    units=units_emi,
+    #)
 
-    # This variable is used to determine the compensation quantity of GHGs
-    # from land-use to ensure that the there are non non-convexities.
-    vars["AFOLU|Other"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Emissions|CO2|AFOLU|Other"],
-        },
-        units=units_emi,
-    )
-    vars["AFOLU|Other LUC"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Emissions|CO2|AFOLU|Other LUC"],
-        },
-        units=units_emi,
-    )
+    ## This variable is used to determine the compensation quantity of GHGs
+    ## from land-use to ensure that the there are non non-convexities.
+    #vars["AFOLU|Other"] = pp.land_out(
+    #    lu_out_filter={
+    #        "level": ["land_use_reporting"],
+    #        "commodity": ["Emissions|CO2|AFOLU|Other"],
+    #    },
+    #    units=units_emi,
+    #)
+    #vars["AFOLU|Other LUC"] = pp.land_out(
+    #    lu_out_filter={
+    #        "level": ["land_use_reporting"],
+    #        "commodity": ["Emissions|CO2|AFOLU|Other LUC"],
+    #    },
+    #    units=units_emi,
+    #)
 
-    vars["AFOLU|Positive"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Emissions|CO2|AFOLU|Positive"],
-        },
-        units=units_emi,
-    )
+    #vars["AFOLU|Positive"] = pp.land_out(
+    #    lu_out_filter={
+    #        "level": ["land_use_reporting"],
+    #        "commodity": ["Emissions|CO2|AFOLU|Positive"],
+    #    },
+    #    units=units_emi,
+    #)
 
     #    vars["AFOLU|Soil Carbon"] = pp.land_out(
     #        lu_out_filter={"level": ["land_use_reporting"],
@@ -3900,8 +3891,8 @@ def retr_CO2emi(units_emi, units_ene_mdl):
     # Aircraft (Table 4)
     # ------------------
 
-    Aircraft = pp_utils._make_zero()
-    vars["Energy|Demand|Transportation|Aviation|International"] = Aircraft
+    #Aircraft = pp_utils._make_zero()
+    #vars["Energy|Demand|Transportation|Aviation|International"] = Aircraft
 
     # -----------------------------------------
     # Electricity and heat production (Table 5)
@@ -4126,8 +4117,8 @@ def retr_CO2emi(units_emi, units_ene_mdl):
         + vars["Energy|Demand|AFOFI"]
         + vars["Energy|Demand|Industry"]
         + vars["Energy|Demand|Residential and Commercial"]
-        + vars["Energy|Demand|Transportation|Road Rail and Domestic Shipping"]
-        + vars["Energy|Demand|Transportation|Aviation|International"]
+        # + vars["Energy|Demand|Transportation|Road Rail and Domestic Shipping"]
+        # + vars["Energy|Demand|Transportation|Aviation|International"]
     )
 
     vars["Energy|Supply|Fugitive"] = (
@@ -4366,7 +4357,7 @@ def retr_CO2emi(units_emi, units_ene_mdl):
     return pd.concat(dfs, sort=True)
 
 
-@_register
+###
 def retr_SE_district_heat(units):
     """Energy: Secondary Energy heat.
 
@@ -4391,7 +4382,7 @@ def retr_SE_district_heat(units):
     return df
 
 
-@_register
+###
 def retr_SE_synfuels(units):
     """Energy: Secondary Energy synthetic fuels.
 
@@ -4499,7 +4490,7 @@ def retr_SE_synfuels(units):
     return df
 
 
-@_register
+###
 def retr_SE_gases(units):
     """Energy: Secondary Energy gases.
 
@@ -4521,7 +4512,7 @@ def retr_SE_gases(units):
     return df
 
 
-@_register
+###
 def retr_SE_solids(units):
     """Energy: Secondary Energy solids.
 
@@ -4548,7 +4539,7 @@ def retr_SE_solids(units):
     return df
 
 
-@_register
+###
 def retr_SE_elecgen(units):
     """Energy: Secondary Energy electricity generation.
 
@@ -4971,7 +4962,7 @@ def retr_SE_elecgen(units):
     return df
 
 
-@_register
+###
 def retr_pe(units, method=None):
     """Energy: Primary Energy.
 
@@ -5862,7 +5853,7 @@ def retr_pe(units, method=None):
         # -----------------------------------
         # Primary Energy from biomass (other)
         # -----------------------------------
-
+        '''
         vars["Biomass|1st Generation"] = pp.land_out(
             lu_out_filter={
                 "level": ["land_use_reporting"],
@@ -5944,7 +5935,7 @@ def retr_pe(units, method=None):
                 "commodity": ["Primary Energy|Biomass|Roundwood harvest"],
             }
         )
-
+        '''
         vars["Biomass|Traditional"] = pp.inp("biomass_nc", units)
 
         # ----------------------------------------------------
@@ -6045,7 +6036,7 @@ def retr_pe(units, method=None):
     return df
 
 
-@_register
+###
 def retr_ppl_capparameters(prmfunc, units):
     """Technology results: Capacity related.
 
@@ -6295,7 +6286,7 @@ def retr_ppl_capparameters(prmfunc, units):
     return df
 
 
-@_register
+###
 def retr_ppl_parameters(prmfunc, units):
     """Technology Inputs: Investment costs and technical lifetime.
 
@@ -6443,7 +6434,7 @@ def retr_ppl_parameters(prmfunc, units):
     return df
 
 
-@_register
+###
 def retr_ppl_opcost_parameters(prmfunc, units):
     """Technology Inputs: Fixed and variable costs.
 
@@ -6692,7 +6683,7 @@ def retr_ppl_opcost_parameters(prmfunc, units):
     return df
 
 
-@_register
+###
 def retr_eff_parameters(units):
     """Technology Inputs: Efficiency.
 
@@ -7017,7 +7008,7 @@ def retr_eff_parameters(units):
     return df
 
 
-@_register
+###
 def retr_fe(units):
     """Energy: Final Energy.
 
@@ -7310,7 +7301,7 @@ def retr_fe(units):
     return df
 
 
-@_register
+###
 def retr_trade(units_energy, units_CPrc_co2, units_emi_val, units_emi_vol):
     """Energy: Trade.
 
@@ -7600,7 +7591,7 @@ def retr_trade(units_energy, units_CPrc_co2, units_emi_val, units_emi_vol):
     return df
 
 
-@_register
+###
 def retr_supply_inv(units_energy, units_emi, units_ene_mdl):
     """Technology results: Investments.
 
@@ -8192,7 +8183,7 @@ def retr_supply_inv(units_energy, units_emi, units_ene_mdl):
     return df
 
 
-@_register
+###
 def retr_water_use(units, method):
     """Water: Withdrawal or Consumption.
 
@@ -9419,45 +9410,45 @@ def retr_water_use(units, method):
     # Irrigation water use
     # --------------------
 
-    vars["Irrigation"] = (
-        pp.land_out(
-            lu_out_filter={
-                "level": ["land_use_reporting"],
-                "commodity": ["Water|Withdrawal|Irrigation"],
-            }
-        )
-        * 0.001
-    )
+    #vars["Irrigation"] = (
+    #    pp.land_out(
+    #        lu_out_filter={
+    #            "level": ["land_use_reporting"],
+    #            "commodity": ["Water|Withdrawal|Irrigation"],
+    #        }
+    #    )
+    #    * 0.001
+    #)
 
-    vars["Irrigation|Cereals"] = (
-        pp.land_out(
-            lu_out_filter={
-                "level": ["land_use_reporting"],
-                "commodity": ["Water|Withdrawal|Irrigation|Cereals"],
-            }
-        )
-        * 0.001
-    )
+    #vars["Irrigation|Cereals"] = (
+    #    pp.land_out(
+    #        lu_out_filter={
+    #            "level": ["land_use_reporting"],
+    #            "commodity": ["Water|Withdrawal|Irrigation|Cereals"],
+    #        }
+    #    )
+    #    * 0.001
+    #)
 
-    vars["Irrigation|Oilcrops"] = (
-        pp.land_out(
-            lu_out_filter={
-                "level": ["land_use_reporting"],
-                "commodity": ["Water|Withdrawal|Irrigation|Oilcrops"],
-            }
-        )
-        * 0.001
-    )
+    #vars["Irrigation|Oilcrops"] = (
+    #    pp.land_out(
+    #        lu_out_filter={
+    #            "level": ["land_use_reporting"],
+    #            "commodity": ["Water|Withdrawal|Irrigation|Oilcrops"],
+    #        }
+    #    )
+    #    * 0.001
+    #)
 
-    vars["Irrigation|Sugarcrops"] = (
-        pp.land_out(
-            lu_out_filter={
-                "level": ["land_use_reporting"],
-                "commodity": ["Water|Withdrawal|Irrigation|Sugarcrops"],
-            }
-        )
-        * 0.001
-    )
+    #vars["Irrigation|Sugarcrops"] = (
+    #    pp.land_out(
+    #        lu_out_filter={
+    #            "level": ["land_use_reporting"],
+    #            "commodity": ["Water|Withdrawal|Irrigation|Sugarcrops"],
+    #        }
+    #    )
+    #    * 0.001
+    #)
 
     if method == "consumption":
         vars["Irrigation"] = pp_utils._make_zero()

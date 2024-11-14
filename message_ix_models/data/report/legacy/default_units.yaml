@@ -25,6 +25,7 @@ model_units:
 conversion_factors:
         GWa:
             EJ/yr: .03154
+            PJ/yr: 31.536
             GWa: 1.
             ???: 1.
             MWa: 1000
@@ -35,12 +36,14 @@ conversion_factors:
             Mt CO2/yr: "float(f\"{mu['conv_c2co2']}\")"
         GWa/a:
             EJ/yr: .03154
+            PJ/yr: 31.536
             GWa: 1.
             ???: 1.
             MWa: .001
             ZJ: .00003154
             km3/yr: 1.
             Index (2005 = 1): 1
+            Mt CO2/yr: "float(f\"{mu['conv_c2co2']}\")"
         EJ/yr:
             ZJ: .001
         y:

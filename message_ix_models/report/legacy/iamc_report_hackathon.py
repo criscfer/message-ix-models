@@ -14,9 +14,18 @@ from message_ix_models.util.compat.message_data.utilities import retrieve_region
 
 from . import postprocess 
 from . import pp_utils
+from . import default_tables_static
 
 log = logging.getLogger(__name__)
 
+
+def report_to_xl(dfs):
+    with pd.ExcelWriter("test_report.xlsx", engine='xlsxwriter') as writer:
+        for i, df in dfs.items():
+            if not df.empty:
+                # Write each DataFrame to a different sheet in the Excel file
+                sheet_name = i  # Create a unique sheet name (Sheet1, Sheet2, etc.)
+                df.to_excel(writer, sheet_name=sheet_name, index=False)
 
 def report(
     mp,
@@ -200,7 +209,7 @@ def report(
     pp_utils.globalname = "{}_GLB".format(region_id)
 
     # Provides option to rename model years for output
-    regions = {n: (n.split("_")[1] if "GLB" not in n else "World") for n in nds}
+    regions = {n: (n if "GLB" not in n else "World") for n in nds}
     pp_utils.regions = regions
     pp_utils.region_id = region_id
     pp_utils.all_tecs = scen.set("technology")
@@ -279,6 +288,16 @@ def report(
     # Run reporting tables
     # --------------------
 
+    def call_tables(i):
+        default_tables_static.pp = pp
+        default_tables_static.mu = mu
+        try:
+            return getattr(default_tables_static, run_tables[i]["function"])(**run_tables[i]["args"])
+        except Exception as e:
+            print(e)
+            return pd.DataFrame()
+        #func_dict[run_tables[i]["function"]](**run_tables[i]["args"])
+    
     dfs = {}
     for i in run_tables:
         if run_tables[i]["active"] is True:
@@ -288,11 +307,13 @@ def report(
                 and eval(run_tables[i]["condition"]) is True
             ):
                 continue
-            dfs[i] = (
-                func_dict[run_tables[i]["function"]]()
-                if "args" not in run_tables[i]
-                else func_dict[run_tables[i]["function"]](**run_tables[i]["args"])
-            )
+            if "args" in run_tables[i]:
+                dfs[i] = call_tables(i)
+            #dfs[i] = (
+            #    func_dict[run_tables[i]["function"]]()
+            #    if "args" not in run_tables[i]
+            #    else call_tables(i)
+            #)
 
     # ---------------------------------
     # Convert dataframes to IAMC-format

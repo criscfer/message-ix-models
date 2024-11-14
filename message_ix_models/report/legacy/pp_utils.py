@@ -661,7 +661,7 @@ def _clean_up_regions(df, units=None):
                 df = pd.concat(dfs, sort=True)
 
     # Removes aggregate region 'WORLD'
-    df = df[df["Region"] != "World"]
+    #df = df[df["Region"] != "World"]
 
     # for reg in list(regions.keys()):
     for reg in regions.keys():
@@ -2261,7 +2261,8 @@ def _retr_land_act(ds, ix):
                     " correct version of the land emulator is being used",
                 )
             )
-        sys.exit(1)
+        #sys.exit(1)
+        pass
     elif ix:
         drop = ["mrg"]
         df = _drap(df, ["lvl", "year"], drop=drop)

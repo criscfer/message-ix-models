@@ -11,7 +11,7 @@ run_tables:
         root: Resource|Extraction
         active: True
         function: retr_extraction
-        args: {"units": "EJ/yr"}
+        args: {"units": "PJ/yr"}
     Res_extr_cum:
         root: Resource|Cumulative Extraction
         active: True
@@ -26,43 +26,43 @@ run_tables:
         root: Primary Energy
         active: True
         function: retr_pe
-        args: {"units": "EJ/yr"}
+        args: {"units": "PJ/yr"}
     Enrgy_PE_sub:
         root: Primary Energy (substitution method)
         active: True
         function: retr_pe
-        args: {"units": "EJ/yr",
+        args: {"units": "PJ/yr",
                "method": "substitution"}
     Enrgy_FE:
         root: Final Energy
         active: True
         function: retr_fe
-        args: {"units": "EJ/yr"}
+        args: {"units": "PJ/yr"}
     Enrgy_SE_elec:
         root: Secondary Energy|Electricity
         active: True
         function: retr_SE_elecgen
-        args: {"units": "EJ/yr"}
+        args: {"units": "PJ/yr"}
     Enrgy_SE_heat:
         root: Secondary Energy|Heat
         active: True
         function: retr_SE_district_heat
-        args: {"units": "EJ/yr"}
+        args: {"units": "PJ/yr"}
     Enrgy_SE_syn:
         root: Secondary Energy
         active: True
         function: retr_SE_synfuels
-        args: {"units": "EJ/yr"}
+        args: {"units": "PJ/yr"}
     Enrgy_SE_gas:
         root: Secondary Energy|Gases
         active: True
         function: retr_SE_gases
-        args: {"units": "EJ/yr"}
+        args: {"units": "PJ/yr"}
     Enrgy_SE_solid:
         root: Secondary Energy|Solids
         active: True
         function: retr_SE_solids
-        args: {"units": "EJ/yr"}
+        args: {"units": "PJ/yr"}
     Emi_CO2:
         root: Emissions|CO2
         active: True
@@ -74,7 +74,7 @@ run_tables:
         active: True
         function: retr_CO2_CCS
         args: {"units_emi": "Mt CO2/yr",
-               "units_ene": "EJ/yr"}
+               "units_ene": "PJ/yr"}
     Emi_BC:
         root: Emissions|BC
         active: True
@@ -280,17 +280,17 @@ run_tables:
         root: Useful Energy
         active: True
         function: retr_demands_input
-        args: {"units": "EJ/yr"}
+        args: {"units": "PJ/yr"}
     Enrgy_UE_outp:
         root: Useful Energy
         active: True
         function: retr_demands_output
-        args: {"units": "EJ/yr"}
+        args: {"units": "PJ/yr"}
     Enrgy_Trd:
         root: Trade
         active: True
         function: retr_trade
-        args: {"units_energy": "EJ/yr",
+        args: {"units_energy": "PJ/yr",
                "units_CPrc_co2": "US$2010/tCO2",
                "units_emi_val": "billion US$2010/yr",
                "units_emi_vol": "Mt CO2-equiv/yr"}
@@ -334,7 +334,7 @@ run_tables:
             "units_emi_CH4": "Mt CH4/yr",
             "units_emi_CO2": "Mt CO2/yr",
             "units_emi_N2O": "kt N2O/yr",
-            "units_ene": "EJ/yr",
+            "units_ene": "PJ/yr",
             "units_ene_prc": "US$2005/GJ",
             "units_CPrc_co2": "US$2005/tCO2",
             "units_CPrc_co2_outp": "US$2005/t CO2",
