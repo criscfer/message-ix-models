@@ -363,13 +363,13 @@ def report(
 
             # Remove newly added timeseries from ts dataframe, to avoid double counting
             ts = ts[ts.Variable.str.find(var) < 0]
-
-        if run_tables[i]["root"] == "Emissions|HFC":
-            df.append(
-                pp_utils.iamc_it(dfs[i], run_tables[i]["root"], mapping, rm_totals=True)
-            )
-        else:
-            df.append(pp_utils.iamc_it(dfs[i], run_tables[i]["root"], mapping))
+        if not dfs[i].empty:
+            if run_tables[i]["root"] == "Emissions|HFC":
+                df.append(
+                    pp_utils.iamc_it(dfs[i], run_tables[i]["root"], mapping, rm_totals=True)
+                )
+            else:
+                df.append(pp_utils.iamc_it(dfs[i], run_tables[i]["root"], mapping))
     df = pd.concat(df, sort=True)
 
     # --------------
@@ -441,4 +441,12 @@ def report(
         out_dir = Path(out_dir)
     if not out_dir.exists():
         out_dir.mkdir()
+
+    ## code for changing negative values to positive 
+    #index = 0
+    #for col in range(9):
+    #    for index in range(df.shape[0]):
+    #        if df.iloc[index, col] < 0:
+    #            df.iloc[index, col] = df.iloc[index, col] * -1
+                
     pp_utils.write_xlsx(df, out_dir)
