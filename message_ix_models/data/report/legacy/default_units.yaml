@@ -34,6 +34,25 @@ conversion_factors:
             Index (2005 = 1): 1
             TWh: 8760. / 1000.
             Mt CO2/yr: "float(f\"{mu['conv_c2co2']}\")"
+            Mt BC/yr: .001
+            Mt CH4/yr: .001
+            Mt CO/yr: .001
+            Mt OC/yr: .001
+            Mt NOx/yr: .001
+            Mt NH3/yr: .001
+            Mt SO2/yr: .001
+            Mt VOC/yr: .001
+            kt HFC125/yr: "float(f\"{mu['gwp_HFC125']}\")"
+            kt HFC134a/yr: "float(f\"{mu['gwp_HFC134a']}\")"
+            kt HFC143a/yr: "float(f\"{mu['gwp_HFC143a']}\")"
+            kt HFC227ea/yr: "float(f\"{mu['gwp_HFC227ea']}\")"
+            kt HFC23/yr: "float(f\"{mu['gwp_HFC23']}\")"
+            kt HFC245fa/yr: "float(f\"{mu['gwp_HFC245fa']}\")"
+            kt HFC365/yr: "float(f\"{mu['gwp_HFC365']}\")"
+            kt HFC32/yr: "float(f\"{mu['gwp_HFC32']}\")"
+            kt HFC43-10/yr: "float(f\"{mu['gwp_HFC4310']}\")"
+            kt HFC236fa/yr: "float(f\"{mu['gwp_HFC236fa']}\")"
+            kt HFC152a/yr: "float(f\"{mu['gwp_HFC152a']}\")"
         GWa/a:
             EJ/yr: .03154
             PJ/yr: 31.536
@@ -44,6 +63,25 @@ conversion_factors:
             km3/yr: 1.
             Index (2005 = 1): 1
             Mt CO2/yr: "float(f\"{mu['conv_c2co2']}\")"
+            Mt BC/yr: .001
+            Mt CH4/yr: .001
+            Mt CO/yr: .001
+            Mt OC/yr: .001
+            Mt NOx/yr: .001
+            Mt NH3/yr: .001
+            Mt SO2/yr: .001
+            Mt VOC/yr: .001
+            kt HFC125/yr: "float(f\"{mu['gwp_HFC125']}\")"
+            kt HFC134a/yr: "float(f\"{mu['gwp_HFC134a']}\")"
+            kt HFC143a/yr: "float(f\"{mu['gwp_HFC143a']}\")"
+            kt HFC227ea/yr: "float(f\"{mu['gwp_HFC227ea']}\")"
+            kt HFC23/yr: "float(f\"{mu['gwp_HFC23']}\")"
+            kt HFC245fa/yr: "float(f\"{mu['gwp_HFC245fa']}\")"
+            kt HFC365/yr: "float(f\"{mu['gwp_HFC365']}\")"
+            kt HFC32/yr: "float(f\"{mu['gwp_HFC32']}\")"
+            kt HFC43-10/yr: "float(f\"{mu['gwp_HFC4310']}\")"
+            kt HFC236fa/yr: "float(f\"{mu['gwp_HFC236fa']}\")"
+            kt HFC152a/yr: "float(f\"{mu['gwp_HFC152a']}\")"
         EJ/yr:
             ZJ: .001
         y:
@@ -146,3 +184,4 @@ conversion_factors:
             Mt CO2-equiv/yr: "float(f\"{mu['conv_c2co2']}\")"
         Mt CO2/yr:
             Mt CO2/yr: 1.
+
