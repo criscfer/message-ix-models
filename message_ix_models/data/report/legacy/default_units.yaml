@@ -53,6 +53,9 @@ conversion_factors:
             kt HFC43-10/yr: "float(f\"{mu['gwp_HFC4310']}\")"
             kt HFC236fa/yr: "float(f\"{mu['gwp_HFC236fa']}\")"
             kt HFC152a/yr: "float(f\"{mu['gwp_HFC152a']}\")"
+            Mt CO2-equiv/yr: "float(f\"{mu['conv_c2co2']}\")" 
+            # N2O is always left in kt
+            kt N2O/yr: 1.
         GWa/a:
             EJ/yr: .03154
             PJ/yr: 31.536
@@ -82,6 +85,9 @@ conversion_factors:
             kt HFC43-10/yr: "float(f\"{mu['gwp_HFC4310']}\")"
             kt HFC236fa/yr: "float(f\"{mu['gwp_HFC236fa']}\")"
             kt HFC152a/yr: "float(f\"{mu['gwp_HFC152a']}\")"
+            Mt CO2-equiv/yr: "float(f\"{mu['conv_c2co2']}\")" 
+            # N2O is always left in kt
+            kt N2O/yr: 1.
         EJ/yr:
             ZJ: .001
         y:

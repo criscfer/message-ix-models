@@ -507,142 +507,142 @@ def retr_remaining_resources(units):
 
 
 ###
-def retr_agri_dem(units):
-    """Landuse: Agricultural Demand.
+# def retr_agri_dem(units):
+#     """Landuse: Agricultural Demand.
 
-    Land-use related agricultural demand.
-    Based on land-use emulator.
+#     Land-use related agricultural demand.
+#     Based on land-use emulator.
 
-    Parameters
-    ----------
+#     Parameters
+#     ----------
 
-    units : str
-        Units to which variables should be converted.
-    """
+#     units : str
+#         Units to which variables should be converted.
+#     """
 
-    vars = {}
+#     vars = {}
 
-    vars["Energy|Crops|1st generation"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Agricultural Demand|Energy|Crops|1st generation"],
-        }
-    )
+#     vars["Energy|Crops|1st generation"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Agricultural Demand|Energy|Crops|1st generation"],
+#         }
+#     )
 
-    vars["Energy|Crops|2nd generation"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Agricultural Demand|Energy|Crops|2nd generation"],
-        }
-    )
+#     vars["Energy|Crops|2nd generation"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Agricultural Demand|Energy|Crops|2nd generation"],
+#         }
+#     )
 
-    vars["Non-Energy|Crops|Feed"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Agricultural Demand|Non-Energy|Crops|Feed"],
-        }
-    )
+#     vars["Non-Energy|Crops|Feed"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Agricultural Demand|Non-Energy|Crops|Feed"],
+#         }
+#     )
 
-    vars["Non-Energy|Crops|Food"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Agricultural Demand|Non-Energy|Crops|Food"],
-        }
-    )
+#     vars["Non-Energy|Crops|Food"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Agricultural Demand|Non-Energy|Crops|Food"],
+#         }
+#     )
 
-    vars["Non-Energy|Crops|Other"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Agricultural Demand|Non-Energy|Crops|Other"],
-        }
-    )
+#     vars["Non-Energy|Crops|Other"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Agricultural Demand|Non-Energy|Crops|Other"],
+#         }
+#     )
 
-    vars["Non-Energy|Crops|Other|Waste"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Agricultural Demand|Non-Energy|Crops|Other|Waste"],
-        }
-    )
+#     vars["Non-Energy|Crops|Other|Waste"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Agricultural Demand|Non-Energy|Crops|Other|Waste"],
+#         }
+#     )
 
-    vars["Non-Energy|Livestock|Food"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Agricultural Demand|Non-Energy|Livestock|Food"],
-        }
-    )
+#     vars["Non-Energy|Livestock|Food"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Agricultural Demand|Non-Energy|Livestock|Food"],
+#         }
+#     )
 
-    vars["Non-Energy|Livestock|Other"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Agricultural Demand|Non-Energy|Livestock|Other"],
-        }
-    )
+#     vars["Non-Energy|Livestock|Other"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Agricultural Demand|Non-Energy|Livestock|Other"],
+#         }
+#     )
 
-    vars["Non-Energy|Livestock|Other|Waste"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Agricultural Demand|Non-Energy|Livestock|Other|Waste"],
-        }
-    )
+#     vars["Non-Energy|Livestock|Other|Waste"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Agricultural Demand|Non-Energy|Livestock|Other|Waste"],
+#         }
+#     )
     
 
-    df = pp_utils.make_outputdf(vars, units)
-    return df
+#     df = pp_utils.make_outputdf(vars, units)
+#     return df
 
 
 ###
-def retr_agri_prd(units):
-    """Landuse: Agricultural Production.
+# def retr_agri_prd(units):
+#     """Landuse: Agricultural Production.
 
-    Land-use related agricultural production.
-    Based on land-use emulator.
+#     Land-use related agricultural production.
+#     Based on land-use emulator.
 
-    Parameters
-    ----------
+#     Parameters
+#     ----------
 
-    units : str
-        Units to which variables should be converted.
-    """
+#     units : str
+#         Units to which variables should be converted.
+#     """
 
-    vars = {}
+#     vars = {}
 
-    vars["Energy|Crops|1st generation"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Agricultural Production|Energy|Crops|1st generation"],
-        }
-    )
+#     vars["Energy|Crops|1st generation"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Agricultural Production|Energy|Crops|1st generation"],
+#         }
+#     )
 
-    vars["Energy|Crops|2nd generation"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Agricultural Production|Energy|Crops|2nd generation"],
-        }
-    )
+#     vars["Energy|Crops|2nd generation"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Agricultural Production|Energy|Crops|2nd generation"],
+#         }
+#     )
 
-    vars["Non-Energy|Crops"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Agricultural Production|Non-Energy|Crops"],
-        }
-    )
+#     vars["Non-Energy|Crops"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Agricultural Production|Non-Energy|Crops"],
+#         }
+#     )
 
-    vars["Non-Energy|Crops|Cereals"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Agricultural Production|Non-Energy|Crops|Cereals"],
-        }
-    )
+#     vars["Non-Energy|Crops|Cereals"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Agricultural Production|Non-Energy|Crops|Cereals"],
+#         }
+#     )
 
-    vars["Non-Energy|Livestock"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Agricultural Production|Non-Energy|Livestock"],
-        }
-    )
+#     vars["Non-Energy|Livestock"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Agricultural Production|Non-Energy|Livestock"],
+#         }
+#     )
 
-    df = pp_utils.make_outputdf(vars, units)
-    return df
+#     df = pp_utils.make_outputdf(vars, units)
+#     return df
 
 
 ###
@@ -904,268 +904,268 @@ def retr_yield(units):
 
 
 ###
-def retr_fertilizer_use(units_nitrogen, units_phosphorus):
-    """Landuse: Fertilizer usage.
+# def retr_fertilizer_use(units_nitrogen, units_phosphorus):
+#     """Landuse: Fertilizer usage.
 
-    Land-use related fertilizer usage.
-    Based on land-use emulator.
+#     Land-use related fertilizer usage.
+#     Based on land-use emulator.
 
-    Parameters
-    ----------
+#     Parameters
+#     ----------
 
-    units_nitrogen : str
-        Units to which nitrogen should be converted.
-    units_phosphorus : str
-        Units to which phosphorus should be converted.
-    """
+#     units_nitrogen : str
+#         Units to which nitrogen should be converted.
+#     units_phosphorus : str
+#         Units to which phosphorus should be converted.
+#     """
 
-    dfs = []
-    vars = {}
+#     dfs = []
+#     vars = {}
 
-    vars["Nitrogen"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Fertilizer Use|Nitrogen"],
-        }
-    )
-    dfs.append(pp_utils.make_outputdf(vars, units_nitrogen))
+#     vars["Nitrogen"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Fertilizer Use|Nitrogen"],
+#         }
+#     )
+#     dfs.append(pp_utils.make_outputdf(vars, units_nitrogen))
 
-    vars = {}
-    vars["Phosphorus"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Fertilizer Use|Phosphorus"],
-        }
-    )
+#     vars = {}
+#     vars["Phosphorus"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Fertilizer Use|Phosphorus"],
+#         }
+#     )
 
-    dfs.append(pp_utils.make_outputdf(vars, units_phosphorus))
-    return pd.concat(dfs, sort=True)
-
-
-###
-def retr_fertilizer_int(units_nitrogen, units_phosphorus):
-    """Landuse: Fertilizer usage.
-
-    Land-use related fertilizer usage.
-    Based on land-use emulator.
-
-    Parameters
-    ----------
-
-    units_nitrogen : str
-        Units to which nitrogen should be converted.
-    units_phosphorus : str
-        Units to which phosphorus should be converted.
-    """
-
-    # This variable is only required for deriving the global value via weighted
-    # average.
-    cropland = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Land Cover|Cropland"],
-        }
-    )
-
-    dfs = []
-    vars = {}
-
-    vars["Nitrogen|Intensity"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Fertilizer|Nitrogen|Intensity"],
-        }
-    )
-    dfs.append(
-        pp_utils.make_outputdf(
-            vars, units_nitrogen, param="weighted_avg", weighted_by=cropland
-        )
-    )
-
-    vars = {}
-    vars["Phosphorus|Intensity"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Fertilizer|Phosphorus|Intensity"],
-        }
-    )
-
-    dfs.append(
-        pp_utils.make_outputdf(
-            vars, units_phosphorus, param="weighted_avg", weighted_by=cropland
-        )
-    )
-    return pd.concat(dfs, sort=True)
+#     dfs.append(pp_utils.make_outputdf(vars, units_phosphorus))
+#     return pd.concat(dfs, sort=True)
 
 
-###
-def retr_food_waste(units):
-    """Landuse: Food waste.
+# ###
+# def retr_fertilizer_int(units_nitrogen, units_phosphorus):
+#     """Landuse: Fertilizer usage.
 
-    Land-use related food demand.
-    Based on land-use emulator.
+#     Land-use related fertilizer usage.
+#     Based on land-use emulator.
 
-    Parameters
-    ----------
+#     Parameters
+#     ----------
 
-    units : str
-        Units to which variables should be converted.
-    """
+#     units_nitrogen : str
+#         Units to which nitrogen should be converted.
+#     units_phosphorus : str
+#         Units to which phosphorus should be converted.
+#     """
 
-    vars = {}
+#     # This variable is only required for deriving the global value via weighted
+#     # average.
+#     cropland = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Land Cover|Cropland"],
+#         }
+#     )
 
-    vars["Crops"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Agricultural Demand|Non-Energy|Crops|Other|Waste"],
-        }
-    )
+#     dfs = []
+#     vars = {}
 
-    vars["Livestock"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Agricultural Demand|Non-Energy|Livestock|Other|Waste"],
-        }
-    )
+#     vars["Nitrogen|Intensity"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Fertilizer|Nitrogen|Intensity"],
+#         }
+#     )
+#     dfs.append(
+#         pp_utils.make_outputdf(
+#             vars, units_nitrogen, param="weighted_avg", weighted_by=cropland
+#         )
+#     )
 
-    df = pp_utils.make_outputdf(vars, units)
-    return df
+#     vars = {}
+#     vars["Phosphorus|Intensity"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Fertilizer|Phosphorus|Intensity"],
+#         }
+#     )
+
+#     dfs.append(
+#         pp_utils.make_outputdf(
+#             vars, units_phosphorus, param="weighted_avg", weighted_by=cropland
+#         )
+#     )
+#     return pd.concat(dfs, sort=True)
 
 
 ###
-def retr_food_dem(units):
-    """Landuse: Food demand.
+# def retr_food_waste(units):
+#     """Landuse: Food waste.
 
-    Land-use related food demand.
-    Based on land-use emulator.
+#     Land-use related food demand.
+#     Based on land-use emulator.
 
-    Parameters
-    ----------
+#     Parameters
+#     ----------
 
-    units : str
-        Units to which variables should be converted.
-    """
+#     units : str
+#         Units to which variables should be converted.
+#     """
 
-    vars = {}
+#     vars = {}
 
-    vars["Total"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Food Demand"],
-        }
-    )
+#     vars["Crops"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Agricultural Demand|Non-Energy|Crops|Other|Waste"],
+#         }
+#     )
 
-    vars["Crops"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Food Demand|Crops"],
-        }
-    )
+#     vars["Livestock"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Agricultural Demand|Non-Energy|Livestock|Other|Waste"],
+#         }
+#     )
 
-    vars["Livestock"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Food Demand|Livestock"],
-        }
-    )
-
-    # This variable is only required for deriving the global value via weighted
-    # average.
-    pop = pp.act("Population")
-    df = pp_utils.make_outputdf(vars, units, param="weighted_avg", weighted_by=pop)
-    return df
+#     df = pp_utils.make_outputdf(vars, units)
+#     return df
 
 
 ###
-def retr_frst_dem(units):
-    """Landuse: Forestry product demand.
+# def retr_food_dem(units):
+#     """Landuse: Food demand.
 
-    Land-use related forestry demand.
-    Based on land-use emulator.
+#     Land-use related food demand.
+#     Based on land-use emulator.
 
-    Parameters
-    ----------
+#     Parameters
+#     ----------
 
-    units : str
-        Units to which variables should be converted.
-    """
+#     units : str
+#         Units to which variables should be converted.
+#     """
 
-    vars = {}
+#     vars = {}
 
-    vars["Roundwood"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Forestry Demand|Roundwood"],
-        }
-    )
+#     vars["Total"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Food Demand"],
+#         }
+#     )
 
-    vars["Roundwood|Industrial Roundwood"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Forestry Demand|Roundwood|Industrial Roundwood"],
-        }
-    )
+#     vars["Crops"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Food Demand|Crops"],
+#         }
+#     )
 
-    vars["Roundwood|Wood Fuel"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Forestry Demand|Roundwood|Wood Fuel"],
-        }
-    )
+#     vars["Livestock"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Food Demand|Livestock"],
+#         }
+#     )
 
-    df = pp_utils.make_outputdf(vars, units)
-    return df
+#     # This variable is only required for deriving the global value via weighted
+#     # average.
+#     pop = pp.act("Population")
+#     df = pp_utils.make_outputdf(vars, units, param="weighted_avg", weighted_by=pop)
+#     return df
 
 
 ###
-def retr_frst_prd(units_residues, units_roundwood):
-    """Landuse: Forestry product production.
+# def retr_frst_dem(units):
+#     """Landuse: Forestry product demand.
 
-    Land-use related forestry production.
-    Based on land-use emulator.
+#     Land-use related forestry demand.
+#     Based on land-use emulator.
 
-    Parameters
-    ----------
+#     Parameters
+#     ----------
 
-    units : str
-        Units to which variables should be converted.
-    """
+#     units : str
+#         Units to which variables should be converted.
+#     """
 
-    dfs = []
+#     vars = {}
 
-    vars = {}
-    vars["Forest Residues"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Forestry Production|Forest Residues"],
-        }
-    )
-    dfs.append(pp_utils.make_outputdf(vars, units_residues))
+#     vars["Roundwood"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Forestry Demand|Roundwood"],
+#         }
+#     )
 
-    vars = {}
-    vars["Roundwood"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Forestry Production|Roundwood"],
-        }
-    )
+#     vars["Roundwood|Industrial Roundwood"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Forestry Demand|Roundwood|Industrial Roundwood"],
+#         }
+#     )
 
-    vars["Roundwood|Industrial Roundwood"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Forestry Production|Roundwood|Industrial Roundwood"],
-        }
-    )
+#     vars["Roundwood|Wood Fuel"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Forestry Demand|Roundwood|Wood Fuel"],
+#         }
+#     )
 
-    vars["Roundwood|Wood Fuel"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Forestry Production|Roundwood|Wood Fuel"],
-        }
-    )
+#     df = pp_utils.make_outputdf(vars, units)
+#     return df
 
-    dfs.append(pp_utils.make_outputdf(vars, units_roundwood))
-    return pd.concat(dfs, sort=True)
+
+###
+# def retr_frst_prd(units_residues, units_roundwood):
+#     """Landuse: Forestry product production.
+
+#     Land-use related forestry production.
+#     Based on land-use emulator.
+
+#     Parameters
+#     ----------
+
+#     units : str
+#         Units to which variables should be converted.
+#     """
+
+#     dfs = []
+
+#     vars = {}
+#     vars["Forest Residues"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Forestry Production|Forest Residues"],
+#         }
+#     )
+#     dfs.append(pp_utils.make_outputdf(vars, units_residues))
+
+#     vars = {}
+#     vars["Roundwood"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Forestry Production|Roundwood"],
+#         }
+#     )
+
+#     vars["Roundwood|Industrial Roundwood"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Forestry Production|Roundwood|Industrial Roundwood"],
+#         }
+#     )
+
+#     vars["Roundwood|Wood Fuel"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Forestry Production|Roundwood|Wood Fuel"],
+#         }
+#     )
+
+#     dfs.append(pp_utils.make_outputdf(vars, units_roundwood))
+#     return pd.concat(dfs, sort=True)
 
 
 ###
@@ -1980,7 +1980,7 @@ def retr_othemi(var, units):
     # -----------------------------
     # 1.1 Agriculture Waste Bruning
     # -----------------------------
-
+    '''
     if var in ["BCA", "OCA", "SO2", "NH3"]:
         # HACK: Variable activity is in kt so GWa -> MWa will * by .001
         AgricultureWasteBurning = pp.emi(
@@ -2196,7 +2196,7 @@ def retr_othemi(var, units):
     )
 
     vars["Energy|Demand|Transportation|Aviation|International"] = Aircraft
-
+    '''
     # -----------------------------------------
     # Electricity and heat production (Table 5)
     # -----------------------------------------
@@ -2806,7 +2806,7 @@ def retr_othemi(var, units):
             + vars["Energy|Demand|Industry"]
             + vars["Energy|Demand|Residential and Commercial"]
             + vars["Energy|Demand|Transportation|Road Rail and Domestic Shipping"]
-            + vars["Energy|Demand|Transportation|Aviation|International"]
+            #+ vars["Energy|Demand|Transportation|Aviation|International"]
         )
 
     elif var in ["CH4"]:
@@ -2862,8 +2862,8 @@ def retr_othemi(var, units):
             + vars["Energy|Demand|Industry"]
             + vars["Energy|Demand|Residential and Commercial"]
             - ResComNC
-            + vars["Energy|Demand|Transportation|Road Rail and Domestic Shipping"]
-            + vars["Energy|Demand|Transportation|Aviation|International"]
+            # + vars["Energy|Demand|Transportation|Road Rail and Domestic Shipping"]
+            # + vars["Energy|Demand|Transportation|Aviation|International"]
         )
 
     else:
@@ -2892,12 +2892,12 @@ def retr_othemi(var, units):
 
         vars["Energy|Combustion"] = (
             vars["Energy|Supply|Combustion"]
-            + vars["Energy|Demand|Transportation|Shipping|International"]
+            # + vars["Energy|Demand|Transportation|Shipping|International"]
             + vars["Energy|Demand|AFOFI"]
             + vars["Energy|Demand|Industry"]
             + vars["Energy|Demand|Residential and Commercial"]
             + vars["Energy|Demand|Transportation|Road Rail and Domestic Shipping"]
-            + vars["Energy|Demand|Transportation|Aviation|International"]
+            # + vars["Energy|Demand|Transportation|Aviation|International"]
         )
 
         vars["Energy|Supply|Fugitive"] = (
@@ -3195,6 +3195,7 @@ def retr_hfc(hfc_lst):
                 + _HFC_AerosolNonMDI
             )
         else:
+            print(hfc)
             vars[hfc] = (
                 pp_utils.fil(_HFC_refAC, "HFC_fac", f"refAC{fil}", units)
                 + pp_utils.fil(_HFC_foam, "HFC_fac", f"foam{fil}", units)

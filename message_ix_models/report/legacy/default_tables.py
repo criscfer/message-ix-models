@@ -517,665 +517,665 @@ def retr_remaining_resources(units):
     return df
 
 
-@_register
-def retr_agri_dem(units):
-    """Landuse: Agricultural Demand.
-
-    Land-use related agricultural demand.
-    Based on land-use emulator.
-
-    Parameters
-    ----------
-
-    units : str
-        Units to which variables should be converted.
-    """
-
-    vars = {}
-
-    vars["Energy|Crops|1st generation"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Agricultural Demand|Energy|Crops|1st generation"],
-        }
-    )
-
-    vars["Energy|Crops|2nd generation"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Agricultural Demand|Energy|Crops|2nd generation"],
-        }
-    )
-
-    vars["Non-Energy|Crops|Feed"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Agricultural Demand|Non-Energy|Crops|Feed"],
-        }
-    )
-
-    vars["Non-Energy|Crops|Food"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Agricultural Demand|Non-Energy|Crops|Food"],
-        }
-    )
-
-    vars["Non-Energy|Crops|Other"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Agricultural Demand|Non-Energy|Crops|Other"],
-        }
-    )
-
-    vars["Non-Energy|Crops|Other|Waste"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Agricultural Demand|Non-Energy|Crops|Other|Waste"],
-        }
-    )
-
-    vars["Non-Energy|Livestock|Food"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Agricultural Demand|Non-Energy|Livestock|Food"],
-        }
-    )
-
-    vars["Non-Energy|Livestock|Other"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Agricultural Demand|Non-Energy|Livestock|Other"],
-        }
-    )
-
-    vars["Non-Energy|Livestock|Other|Waste"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Agricultural Demand|Non-Energy|Livestock|Other|Waste"],
-        }
-    )
-
-    df = pp_utils.make_outputdf(vars, units)
-    return df
-
-
-@_register
-def retr_agri_prd(units):
-    """Landuse: Agricultural Production.
-
-    Land-use related agricultural production.
-    Based on land-use emulator.
-
-    Parameters
-    ----------
-
-    units : str
-        Units to which variables should be converted.
-    """
-
-    vars = {}
-
-    vars["Energy|Crops|1st generation"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Agricultural Production|Energy|Crops|1st generation"],
-        }
-    )
-
-    vars["Energy|Crops|2nd generation"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Agricultural Production|Energy|Crops|2nd generation"],
-        }
-    )
-
-    vars["Non-Energy|Crops"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Agricultural Production|Non-Energy|Crops"],
-        }
-    )
-
-    vars["Non-Energy|Crops|Cereals"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Agricultural Production|Non-Energy|Crops|Cereals"],
-        }
-    )
-
-    vars["Non-Energy|Livestock"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Agricultural Production|Non-Energy|Livestock"],
-        }
-    )
-
-    df = pp_utils.make_outputdf(vars, units)
-    return df
-
-
-@_register
-def retr_lnd_cvr(units):
-    """Landuse: Land-Cover.
-
-    Land-use cover.
-    Based on land-use emulator.
-
-    Parameters
-    ----------
-
-    units : str
-        Units to which variables should be converted.
-    """
-
-    vars = {}
-
-    vars["Total"] = pp.land_out(
-        lu_out_filter={"level": ["land_use_reporting"], "commodity": ["Land Cover"]}
-    )
-
-    vars["Cropland"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Land Cover|Cropland"],
-        }
-    )
-
-    vars["Cropland|Cereals"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Land Cover|Cropland|Cereals"],
-        }
-    )
-
-    vars["Cropland|Energy Crops"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Land Cover|Cropland|Energy Crops"],
-        }
-    )
-
-    vars["Cropland|Irrigated"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Land Cover|Cropland|Irrigated"],
-        }
-    )
-
-    vars["Cropland|Non-Energy Crops"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Land Cover|Cropland|Non-Energy Crops"],
-        }
-    )
-
-    vars["Cropland|Oilcrops"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Land Cover|Cropland|Oilcrops"],
-        }
-    )
-
-    vars["Cropland|Sugarcrops"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Land Cover|Cropland|Sugarcrops"],
-        }
-    )
-
-    vars["Forest"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Land Cover|Forest"],
-        }
-    )
-
-    vars["Forest|Afforestation and Reforestation"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Land Cover|Forest|Afforestation and Reforestation"],
-        }
-    )
-
-    vars["Forest|Forest old"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Land Cover|Forest|Forest old"],
-        }
-    )
-
-    vars["Forest|Forestry"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Land Cover|Forest|Forestry"],
-        }
-    )
-
-    vars["Forest|Managed"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Land Cover|Forest|Managed"],
-        }
-    )
-
-    vars["Forest|Natural Forest"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Land Cover|Forest|Natural Forest"],
-        }
-    )
-
-    vars["Other Land"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Land Cover|Other Land"],
-        }
-    )
-
-    vars["Pasture"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Land Cover|Pasture"],
-        }
-    )
-
-    vars["Protected"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Land Cover|Protected"],
-        }
-    )
-
-    df = pp_utils.make_outputdf(vars, units)
-    return df
-
-
-@_register
-def retr_yield(units):
-    """Landuse: Crop yield.
-
-    Land-use related crop-yield.
-    Based on land-use emulator.
-
-    Parameters
-    ----------
-
-    units : str
-        Units to which variables should be converted.
-    """
-
-    dfs = []
-
-    # Process and weight cereals
-    vars = {}
-    vars["Cereal"] = pp.land_out(
-        lu_out_filter={"level": ["land_use_reporting"], "commodity": ["Yield|Cereals"]}
-    )
-
-    cropland = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Land Cover|Cropland|Cereals"],
-        }
-    )
-
-    dfs.append(
-        pp_utils.make_outputdf(
-            vars, units, param="weighted_avg", weighted_by=pp_utils.sum_reg(cropland)
-        )
-    )
-
-    # Process and weight Energy Crops
-    vars = {}
-    vars["Energy Crops"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Yield|Energy Crops"],
-        }
-    )
-
-    cropland = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Land Cover|Cropland|Energy Crops"],
-        }
-    )
-
-    dfs.append(
-        pp_utils.make_outputdf(
-            vars, units, param="weighted_avg", weighted_by=pp_utils.sum_reg(cropland)
-        )
-    )
-
-    # Process and weight Non-Energy Crops
-    vars = {}
-    vars["Non-Energy Crops"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Yield|Non-Energy Crops"],
-        }
-    )
-
-    cropland = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Land Cover|Cropland|Non-Energy Crops"],
-        }
-    )
-    dfs.append(
-        pp_utils.make_outputdf(
-            vars, units, param="weighted_avg", weighted_by=pp_utils.sum_reg(cropland)
-        )
-    )
-
-    # Process and weight Oilcrops
-    vars = {}
-    vars["Oilcrops"] = pp.land_out(
-        lu_out_filter={"level": ["land_use_reporting"], "commodity": ["Yield|Oilcrops"]}
-    )
-
-    cropland = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Land Cover|Cropland|Oilcrops"],
-        }
-    )
-
-    dfs.append(
-        pp_utils.make_outputdf(
-            vars, units, param="weighted_avg", weighted_by=pp_utils.sum_reg(cropland)
-        )
-    )
-
-    # Process and weight Sugarcrops
-    vars = {}
-    vars["Sugarcrops"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Yield|Sugarcrops"],
-        }
-    )
-
-    cropland = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Land Cover|Cropland|Sugarcrops"],
-        }
-    )
-
-    dfs.append(
-        pp_utils.make_outputdf(
-            vars, units, param="weighted_avg", weighted_by=pp_utils.sum_reg(cropland)
-        )
-    )
-
-    return pd.concat(dfs, sort=True)
-
-
-@_register
-def retr_fertilizer_use(units_nitrogen, units_phosphorus):
-    """Landuse: Fertilizer usage.
-
-    Land-use related fertilizer usage.
-    Based on land-use emulator.
-
-    Parameters
-    ----------
-
-    units_nitrogen : str
-        Units to which nitrogen should be converted.
-    units_phosphorus : str
-        Units to which phosphorus should be converted.
-    """
-
-    dfs = []
-    vars = {}
-
-    vars["Nitrogen"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Fertilizer Use|Nitrogen"],
-        }
-    )
-    dfs.append(pp_utils.make_outputdf(vars, units_nitrogen))
-
-    vars = {}
-    vars["Phosphorus"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Fertilizer Use|Phosphorus"],
-        }
-    )
-
-    dfs.append(pp_utils.make_outputdf(vars, units_phosphorus))
-    return pd.concat(dfs, sort=True)
-
-
-@_register
-def retr_fertilizer_int(units_nitrogen, units_phosphorus):
-    """Landuse: Fertilizer usage.
-
-    Land-use related fertilizer usage.
-    Based on land-use emulator.
-
-    Parameters
-    ----------
-
-    units_nitrogen : str
-        Units to which nitrogen should be converted.
-    units_phosphorus : str
-        Units to which phosphorus should be converted.
-    """
-
-    # This variable is only required for deriving the global value via weighted
-    # average.
-    cropland = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Land Cover|Cropland"],
-        }
-    )
-
-    dfs = []
-    vars = {}
-
-    vars["Nitrogen|Intensity"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Fertilizer|Nitrogen|Intensity"],
-        }
-    )
-    dfs.append(
-        pp_utils.make_outputdf(
-            vars, units_nitrogen, param="weighted_avg", weighted_by=cropland
-        )
-    )
-
-    vars = {}
-    vars["Phosphorus|Intensity"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Fertilizer|Phosphorus|Intensity"],
-        }
-    )
-
-    dfs.append(
-        pp_utils.make_outputdf(
-            vars, units_phosphorus, param="weighted_avg", weighted_by=cropland
-        )
-    )
-    return pd.concat(dfs, sort=True)
-
-
-@_register
-def retr_food_waste(units):
-    """Landuse: Food waste.
-
-    Land-use related food demand.
-    Based on land-use emulator.
-
-    Parameters
-    ----------
-
-    units : str
-        Units to which variables should be converted.
-    """
-
-    vars = {}
-
-    vars["Crops"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Agricultural Demand|Non-Energy|Crops|Other|Waste"],
-        }
-    )
-
-    vars["Livestock"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Agricultural Demand|Non-Energy|Livestock|Other|Waste"],
-        }
-    )
-
-    df = pp_utils.make_outputdf(vars, units)
-    return df
-
-
-@_register
-def retr_food_dem(units):
-    """Landuse: Food demand.
-
-    Land-use related food demand.
-    Based on land-use emulator.
-
-    Parameters
-    ----------
-
-    units : str
-        Units to which variables should be converted.
-    """
-
-    vars = {}
-
-    vars["Total"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Food Demand"],
-        }
-    )
-
-    vars["Crops"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Food Demand|Crops"],
-        }
-    )
-
-    vars["Livestock"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Food Demand|Livestock"],
-        }
-    )
-
-    # This variable is only required for deriving the global value via weighted
-    # average.
-    pop = pp.act("Population")
-    df = pp_utils.make_outputdf(vars, units, param="weighted_avg", weighted_by=pop)
-    return df
-
-
-@_register
-def retr_frst_dem(units):
-    """Landuse: Forestry product demand.
-
-    Land-use related forestry demand.
-    Based on land-use emulator.
-
-    Parameters
-    ----------
-
-    units : str
-        Units to which variables should be converted.
-    """
-
-    vars = {}
-
-    vars["Roundwood"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Forestry Demand|Roundwood"],
-        }
-    )
-
-    vars["Roundwood|Industrial Roundwood"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Forestry Demand|Roundwood|Industrial Roundwood"],
-        }
-    )
-
-    vars["Roundwood|Wood Fuel"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Forestry Demand|Roundwood|Wood Fuel"],
-        }
-    )
-
-    df = pp_utils.make_outputdf(vars, units)
-    return df
-
-
-@_register
-def retr_frst_prd(units_residues, units_roundwood):
-    """Landuse: Forestry product production.
-
-    Land-use related forestry production.
-    Based on land-use emulator.
-
-    Parameters
-    ----------
-
-    units : str
-        Units to which variables should be converted.
-    """
-
-    dfs = []
-
-    vars = {}
-    vars["Forest Residues"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Forestry Production|Forest Residues"],
-        }
-    )
-    dfs.append(pp_utils.make_outputdf(vars, units_residues))
-
-    vars = {}
-    vars["Roundwood"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Forestry Production|Roundwood"],
-        }
-    )
-
-    vars["Roundwood|Industrial Roundwood"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Forestry Production|Roundwood|Industrial Roundwood"],
-        }
-    )
-
-    vars["Roundwood|Wood Fuel"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Forestry Production|Roundwood|Wood Fuel"],
-        }
-    )
-
-    dfs.append(pp_utils.make_outputdf(vars, units_roundwood))
-    return pd.concat(dfs, sort=True)
+# @_register
+# def retr_agri_dem(units):
+#     """Landuse: Agricultural Demand.
+
+#     Land-use related agricultural demand.
+#     Based on land-use emulator.
+
+#     Parameters
+#     ----------
+
+#     units : str
+#         Units to which variables should be converted.
+#     """
+
+#     vars = {}
+
+#     vars["Energy|Crops|1st generation"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Agricultural Demand|Energy|Crops|1st generation"],
+#         }
+#     )
+
+#     vars["Energy|Crops|2nd generation"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Agricultural Demand|Energy|Crops|2nd generation"],
+#         }
+#     )
+
+#     vars["Non-Energy|Crops|Feed"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Agricultural Demand|Non-Energy|Crops|Feed"],
+#         }
+#     )
+
+#     vars["Non-Energy|Crops|Food"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Agricultural Demand|Non-Energy|Crops|Food"],
+#         }
+#     )
+
+#     vars["Non-Energy|Crops|Other"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Agricultural Demand|Non-Energy|Crops|Other"],
+#         }
+#     )
+
+#     vars["Non-Energy|Crops|Other|Waste"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Agricultural Demand|Non-Energy|Crops|Other|Waste"],
+#         }
+#     )
+
+#     vars["Non-Energy|Livestock|Food"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Agricultural Demand|Non-Energy|Livestock|Food"],
+#         }
+#     )
+
+#     vars["Non-Energy|Livestock|Other"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Agricultural Demand|Non-Energy|Livestock|Other"],
+#         }
+#     )
+
+#     vars["Non-Energy|Livestock|Other|Waste"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Agricultural Demand|Non-Energy|Livestock|Other|Waste"],
+#         }
+#     )
+
+#     df = pp_utils.make_outputdf(vars, units)
+#     return df
+
+
+# @_register
+# def retr_agri_prd(units):
+#     """Landuse: Agricultural Production.
+
+#     Land-use related agricultural production.
+#     Based on land-use emulator.
+
+#     Parameters
+#     ----------
+
+#     units : str
+#         Units to which variables should be converted.
+#     """
+
+#     vars = {}
+
+#     vars["Energy|Crops|1st generation"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Agricultural Production|Energy|Crops|1st generation"],
+#         }
+#     )
+
+#     vars["Energy|Crops|2nd generation"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Agricultural Production|Energy|Crops|2nd generation"],
+#         }
+#     )
+
+#     vars["Non-Energy|Crops"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Agricultural Production|Non-Energy|Crops"],
+#         }
+#     )
+
+#     vars["Non-Energy|Crops|Cereals"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Agricultural Production|Non-Energy|Crops|Cereals"],
+#         }
+#     )
+
+#     vars["Non-Energy|Livestock"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Agricultural Production|Non-Energy|Livestock"],
+#         }
+#     )
+
+#     df = pp_utils.make_outputdf(vars, units)
+#     return df
+
+
+# @_register
+# def retr_lnd_cvr(units):
+#     """Landuse: Land-Cover.
+
+#     Land-use cover.
+#     Based on land-use emulator.
+
+#     Parameters
+#     ----------
+
+#     units : str
+#         Units to which variables should be converted.
+#     """
+
+#     vars = {}
+
+#     vars["Total"] = pp.land_out(
+#         lu_out_filter={"level": ["land_use_reporting"], "commodity": ["Land Cover"]}
+#     )
+
+#     vars["Cropland"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Land Cover|Cropland"],
+#         }
+#     )
+
+#     vars["Cropland|Cereals"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Land Cover|Cropland|Cereals"],
+#         }
+#     )
+
+#     vars["Cropland|Energy Crops"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Land Cover|Cropland|Energy Crops"],
+#         }
+#     )
+
+#     vars["Cropland|Irrigated"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Land Cover|Cropland|Irrigated"],
+#         }
+#     )
+
+#     vars["Cropland|Non-Energy Crops"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Land Cover|Cropland|Non-Energy Crops"],
+#         }
+#     )
+
+#     vars["Cropland|Oilcrops"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Land Cover|Cropland|Oilcrops"],
+#         }
+#     )
+
+#     vars["Cropland|Sugarcrops"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Land Cover|Cropland|Sugarcrops"],
+#         }
+#     )
+
+#     vars["Forest"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Land Cover|Forest"],
+#         }
+#     )
+
+#     vars["Forest|Afforestation and Reforestation"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Land Cover|Forest|Afforestation and Reforestation"],
+#         }
+#     )
+
+#     vars["Forest|Forest old"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Land Cover|Forest|Forest old"],
+#         }
+#     )
+
+#     vars["Forest|Forestry"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Land Cover|Forest|Forestry"],
+#         }
+#     )
+
+#     vars["Forest|Managed"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Land Cover|Forest|Managed"],
+#         }
+#     )
+
+#     vars["Forest|Natural Forest"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Land Cover|Forest|Natural Forest"],
+#         }
+#     )
+
+#     vars["Other Land"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Land Cover|Other Land"],
+#         }
+#     )
+
+#     vars["Pasture"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Land Cover|Pasture"],
+#         }
+#     )
+
+#     vars["Protected"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Land Cover|Protected"],
+#         }
+#     )
+
+#     df = pp_utils.make_outputdf(vars, units)
+#     return df
+
+
+# @_register
+# def retr_yield(units):
+#     """Landuse: Crop yield.
+
+#     Land-use related crop-yield.
+#     Based on land-use emulator.
+
+#     Parameters
+#     ----------
+
+#     units : str
+#         Units to which variables should be converted.
+#     """
+
+#     dfs = []
+
+#     # Process and weight cereals
+#     vars = {}
+#     vars["Cereal"] = pp.land_out(
+#         lu_out_filter={"level": ["land_use_reporting"], "commodity": ["Yield|Cereals"]}
+#     )
+
+#     cropland = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Land Cover|Cropland|Cereals"],
+#         }
+#     )
+
+#     dfs.append(
+#         pp_utils.make_outputdf(
+#             vars, units, param="weighted_avg", weighted_by=pp_utils.sum_reg(cropland)
+#         )
+#     )
+
+#     # Process and weight Energy Crops
+#     vars = {}
+#     vars["Energy Crops"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Yield|Energy Crops"],
+#         }
+#     )
+
+#     cropland = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Land Cover|Cropland|Energy Crops"],
+#         }
+#     )
+
+#     dfs.append(
+#         pp_utils.make_outputdf(
+#             vars, units, param="weighted_avg", weighted_by=pp_utils.sum_reg(cropland)
+#         )
+#     )
+
+#     # Process and weight Non-Energy Crops
+#     vars = {}
+#     vars["Non-Energy Crops"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Yield|Non-Energy Crops"],
+#         }
+#     )
+
+#     cropland = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Land Cover|Cropland|Non-Energy Crops"],
+#         }
+#     )
+#     dfs.append(
+#         pp_utils.make_outputdf(
+#             vars, units, param="weighted_avg", weighted_by=pp_utils.sum_reg(cropland)
+#         )
+#     )
+
+#     # Process and weight Oilcrops
+#     vars = {}
+#     vars["Oilcrops"] = pp.land_out(
+#         lu_out_filter={"level": ["land_use_reporting"], "commodity": ["Yield|Oilcrops"]}
+#     )
+
+#     cropland = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Land Cover|Cropland|Oilcrops"],
+#         }
+#     )
+
+#     dfs.append(
+#         pp_utils.make_outputdf(
+#             vars, units, param="weighted_avg", weighted_by=pp_utils.sum_reg(cropland)
+#         )
+#     )
+
+#     # Process and weight Sugarcrops
+#     vars = {}
+#     vars["Sugarcrops"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Yield|Sugarcrops"],
+#         }
+#     )
+
+#     cropland = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Land Cover|Cropland|Sugarcrops"],
+#         }
+#     )
+
+#     dfs.append(
+#         pp_utils.make_outputdf(
+#             vars, units, param="weighted_avg", weighted_by=pp_utils.sum_reg(cropland)
+#         )
+#     )
+
+#     return pd.concat(dfs, sort=True)
+
+
+# @_register
+# def retr_fertilizer_use(units_nitrogen, units_phosphorus):
+#     """Landuse: Fertilizer usage.
+
+#     Land-use related fertilizer usage.
+#     Based on land-use emulator.
+
+#     Parameters
+#     ----------
+
+#     units_nitrogen : str
+#         Units to which nitrogen should be converted.
+#     units_phosphorus : str
+#         Units to which phosphorus should be converted.
+#     """
+
+#     dfs = []
+#     vars = {}
+
+#     vars["Nitrogen"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Fertilizer Use|Nitrogen"],
+#         }
+#     )
+#     dfs.append(pp_utils.make_outputdf(vars, units_nitrogen))
+
+#     vars = {}
+#     vars["Phosphorus"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Fertilizer Use|Phosphorus"],
+#         }
+#     )
+
+#     dfs.append(pp_utils.make_outputdf(vars, units_phosphorus))
+#     return pd.concat(dfs, sort=True)
+
+
+# @_register
+# def retr_fertilizer_int(units_nitrogen, units_phosphorus):
+#     """Landuse: Fertilizer usage.
+
+#     Land-use related fertilizer usage.
+#     Based on land-use emulator.
+
+#     Parameters
+#     ----------
+
+#     units_nitrogen : str
+#         Units to which nitrogen should be converted.
+#     units_phosphorus : str
+#         Units to which phosphorus should be converted.
+#     """
+
+#     # This variable is only required for deriving the global value via weighted
+#     # average.
+#     cropland = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Land Cover|Cropland"],
+#         }
+#     )
+
+#     dfs = []
+#     vars = {}
+
+#     vars["Nitrogen|Intensity"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Fertilizer|Nitrogen|Intensity"],
+#         }
+#     )
+#     dfs.append(
+#         pp_utils.make_outputdf(
+#             vars, units_nitrogen, param="weighted_avg", weighted_by=cropland
+#         )
+#     )
+
+#     vars = {}
+#     vars["Phosphorus|Intensity"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Fertilizer|Phosphorus|Intensity"],
+#         }
+#     )
+
+#     dfs.append(
+#         pp_utils.make_outputdf(
+#             vars, units_phosphorus, param="weighted_avg", weighted_by=cropland
+#         )
+#     )
+#     return pd.concat(dfs, sort=True)
+
+
+# @_register
+# def retr_food_waste(units):
+#     """Landuse: Food waste.
+
+#     Land-use related food demand.
+#     Based on land-use emulator.
+
+#     Parameters
+#     ----------
+
+#     units : str
+#         Units to which variables should be converted.
+#     """
+
+#     vars = {}
+
+#     vars["Crops"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Agricultural Demand|Non-Energy|Crops|Other|Waste"],
+#         }
+#     )
+
+#     vars["Livestock"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Agricultural Demand|Non-Energy|Livestock|Other|Waste"],
+#         }
+#     )
+
+#     df = pp_utils.make_outputdf(vars, units)
+#     return df
+
+
+# @_register
+# def retr_food_dem(units):
+#     """Landuse: Food demand.
+
+#     Land-use related food demand.
+#     Based on land-use emulator.
+
+#     Parameters
+#     ----------
+
+#     units : str
+#         Units to which variables should be converted.
+#     """
+
+#     vars = {}
+
+#     vars["Total"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Food Demand"],
+#         }
+#     )
+
+#     vars["Crops"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Food Demand|Crops"],
+#         }
+#     )
+
+#     vars["Livestock"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Food Demand|Livestock"],
+#         }
+#     )
+
+#     # This variable is only required for deriving the global value via weighted
+#     # average.
+#     pop = pp.act("Population")
+#     df = pp_utils.make_outputdf(vars, units, param="weighted_avg", weighted_by=pop)
+#     return df
+
+
+# @_register
+# def retr_frst_dem(units):
+#     """Landuse: Forestry product demand.
+
+#     Land-use related forestry demand.
+#     Based on land-use emulator.
+
+#     Parameters
+#     ----------
+
+#     units : str
+#         Units to which variables should be converted.
+#     """
+
+#     vars = {}
+
+#     vars["Roundwood"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Forestry Demand|Roundwood"],
+#         }
+#     )
+
+#     vars["Roundwood|Industrial Roundwood"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Forestry Demand|Roundwood|Industrial Roundwood"],
+#         }
+#     )
+
+#     vars["Roundwood|Wood Fuel"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Forestry Demand|Roundwood|Wood Fuel"],
+#         }
+#     )
+
+#     df = pp_utils.make_outputdf(vars, units)
+#     return df
+
+
+# @_register
+# def retr_frst_prd(units_residues, units_roundwood):
+#     """Landuse: Forestry product production.
+
+#     Land-use related forestry production.
+#     Based on land-use emulator.
+
+#     Parameters
+#     ----------
+
+#     units : str
+#         Units to which variables should be converted.
+#     """
+
+#     dfs = []
+
+#     vars = {}
+#     vars["Forest Residues"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Forestry Production|Forest Residues"],
+#         }
+#     )
+#     dfs.append(pp_utils.make_outputdf(vars, units_residues))
+
+#     vars = {}
+#     vars["Roundwood"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Forestry Production|Roundwood"],
+#         }
+#     )
+
+#     vars["Roundwood|Industrial Roundwood"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Forestry Production|Roundwood|Industrial Roundwood"],
+#         }
+#     )
+
+#     vars["Roundwood|Wood Fuel"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Forestry Production|Roundwood|Wood Fuel"],
+#         }
+#     )
+
+#     dfs.append(pp_utils.make_outputdf(vars, units_roundwood))
+#     return pd.concat(dfs, sort=True)
 
 
 @_register
@@ -1742,102 +1742,102 @@ def retr_price(
     return pd.concat(dfs, sort=True)
 
 
-@_register
-def retr_globiom_feedback(
-    units_emi_CH4,
-    units_emi_CO2,
-    units_emi_N2O,
-    units_ene,
-    units_ene_prc,
-    units_CPrc_co2,
-    units_CPrc_co2_outp,
-    units_gdp,
-):
-    dfs = []
-    vars = {}
-    vars["Emissions|CH4|AFOLU"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Emissions|CH4|AFOLU"],
-        }
-    )
-    dfs.append(pp_utils.make_outputdf(vars, units_emi_CH4))
+# @_register
+# def retr_globiom_feedback(
+#     units_emi_CH4,
+#     units_emi_CO2,
+#     units_emi_N2O,
+#     units_ene,
+#     units_ene_prc,
+#     units_CPrc_co2,
+#     units_CPrc_co2_outp,
+#     units_gdp,
+# ):
+#     dfs = []
+#     vars = {}
+#     vars["Emissions|CH4|AFOLU"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Emissions|CH4|AFOLU"],
+#         }
+#     )
+#     dfs.append(pp_utils.make_outputdf(vars, units_emi_CH4))
 
-    vars = {}
-    vars["Emissions|CO2|AFOLU"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Emissions|CO2|AFOLU"],
-        }
-    )
-    dfs.append(pp_utils.make_outputdf(vars, units_emi_CO2))
+#     vars = {}
+#     vars["Emissions|CO2|AFOLU"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Emissions|CO2|AFOLU"],
+#         }
+#     )
+#     dfs.append(pp_utils.make_outputdf(vars, units_emi_CO2))
 
-    vars = {}
-    vars["Emissions|N2O|AFOLU"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Emissions|N2O|AFOLU"],
-        }
-    )
-    dfs.append(pp_utils.make_outputdf(vars, units_emi_N2O))
+#     vars = {}
+#     vars["Emissions|N2O|AFOLU"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Emissions|N2O|AFOLU"],
+#         }
+#     )
+#     dfs.append(pp_utils.make_outputdf(vars, units_emi_N2O))
 
-    vars = {}
-    vars["Primary Energy|Biomass"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Primary Energy|Biomass"],
-        }
-    )
-    vars["Primary Energy|Biomass|Energy Crops"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Primary Energy|Biomass|Energy Crops"],
-        }
-    )
+#     vars = {}
+#     vars["Primary Energy|Biomass"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Primary Energy|Biomass"],
+#         }
+#     )
+#     vars["Primary Energy|Biomass|Energy Crops"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Primary Energy|Biomass|Energy Crops"],
+#         }
+#     )
 
-    vars["Primary Energy|Biomass|1st Generation"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Primary Energy|Biomass|1st Generation"],
-        }
-    )
+#     vars["Primary Energy|Biomass|1st Generation"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Primary Energy|Biomass|1st Generation"],
+#         }
+#     )
 
-    vars["Primary Energy|Biomass|Fuelwood"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Primary Energy|Biomass|Fuelwood"],
-        }
-    )
+#     vars["Primary Energy|Biomass|Fuelwood"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Primary Energy|Biomass|Fuelwood"],
+#         }
+#     )
 
-    dfs.append(pp_utils.make_outputdf(vars, units_ene))
+#     dfs.append(pp_utils.make_outputdf(vars, units_ene))
 
-    # Both the carbon price and the GDP should be reported in US$2005
-    vars = {}
-    vars["Price|Carbon"] = pp.cprc(units_CPrc_co2)
-    dfs.append(pp_utils.make_outputdf(vars, units_CPrc_co2_outp, param="max"))
+#     # Both the carbon price and the GDP should be reported in US$2005
+#     vars = {}
+#     vars["Price|Carbon"] = pp.cprc(units_CPrc_co2)
+#     dfs.append(pp_utils.make_outputdf(vars, units_CPrc_co2_outp, param="max"))
 
-    vars = {}
-    MERtoPPP = pp.par_MERtoPPP()
+#     vars = {}
+#     MERtoPPP = pp.par_MERtoPPP()
 
-    # The historic values are filled with the earliest
-    # available data (constant). Global values set to zero.
-    MERtoPPP = MERtoPPP.replace(0, np.nan).fillna(method="backfill", axis=1).fillna(0)
+#     # The historic values are filled with the earliest
+#     # available data (constant). Global values set to zero.
+#     MERtoPPP = MERtoPPP.replace(0, np.nan).fillna(method="backfill", axis=1).fillna(0)
 
-    vars["GDP|PPP"] = pp.var_gdp() * MERtoPPP
-    dfs.append(pp_utils.make_outputdf(vars, units_gdp))
+#     vars["GDP|PPP"] = pp.var_gdp() * MERtoPPP
+#     dfs.append(pp_utils.make_outputdf(vars, units_gdp))
 
-    # Provide "original" biomass price, without any of the additional adjustments
-    # too include the abatement of lu-emissions
-    vars = {}
-    vars["Price|Primary Energy|Biomass"] = pp.land_out(
-        lu_out_filter={
-            "level": ["land_use_reporting"],
-            "commodity": ["Price|Primary Energy|Biomass"],
-        }
-    )
-    dfs.append(pp_utils.make_outputdf(vars, units_ene_prc, glb=False))
+#     # Provide "original" biomass price, without any of the additional adjustments
+#     # too include the abatement of lu-emissions
+#     vars = {}
+#     vars["Price|Primary Energy|Biomass"] = pp.land_out(
+#         lu_out_filter={
+#             "level": ["land_use_reporting"],
+#             "commodity": ["Price|Primary Energy|Biomass"],
+#         }
+#     )
+#     dfs.append(pp_utils.make_outputdf(vars, units_ene_prc, glb=False))
 
-    return pd.concat(dfs, sort=True)
+#     return pd.concat(dfs, sort=True)
 
 
 @_register
@@ -8192,1364 +8192,1365 @@ def retr_supply_inv(units_energy, units_emi, units_ene_mdl):
     return df
 
 
-@_register
-def retr_water_use(units, method):
-    """Water: Withdrawal or Consumption.
-
-    Parameters
-    ----------
-    units : str
-        Units to which variables should be converted.
-    method : str
-        `withdrawal` will calculate the water withdrawn, while
-        `consumption` will calculate the `withdrawal` and subtrace the
-        water quantities returned.
-    """
-
-    vars = {}
-
-    if run_history != "True":
-        group = ["Region", "Mode", "Vintage"]
-    else:
-        group = ["Region"]
-
-    # --------------------------------
-    # Calculation of helping variables
-    # --------------------------------
-
-    _Cogen = pp.inp("po_turbine", inpfilter={"commodity": ["electr"]})
-
-    _Potential = pp.act_rel(
-        [
-            "coal_ppl_u",
-            "coal_ppl",
-            "coal_adv",
-            "coal_adv_ccs",
-            "foil_ppl",
-            "loil_ppl",
-            "loil_cc",
-            "gas_ppl",
-            "gas_ct",
-            "gas_cc",
-            "gas_cc_ccs",
-            "gas_htfc",
-            "bio_ppl",
-            "bio_istig",
-            "bio_istig_ccs",
-            "igcc",
-            "igcc_ccs",
-            "nuc_lc",
-            "nuc_hc",
-            "geo_ppl",
-        ],
-        relfilter={"relation": ["pass_out_trb"]},
-    )
-
-    _Biogas = pp.out("gas_bio")
-
-    _gas_inp_tecs = [
-        "gas_ppl",
-        "gas_cc",
-        "gas_cc_ccs",
-        "gas_ct",
-        "gas_htfc",
-        "gas_hpl",
-        "meth_ng",
-        "meth_ng_ccs",
-        "h2_smr",
-        "h2_smr_ccs",
-        "gas_t_d",
-        "gas_t_d_ch4",
-    ]
-
-    _totgas = pp.inp(_gas_inp_tecs, inpfilter={"commodity": ["gas"]})
-    _Frac = (_Cogen / _Potential).fillna(0)
-    _BGas_share = (_Biogas / _totgas).fillna(0)
-
-    # Calculate shares for ppl feeding into g_ppl_co2scr (gas_cc and gas_ppl)
-    _gas_cc_shr = (pp.out("gas_cc") / pp.out(["gas_cc", "gas_ppl"])).fillna(0)
-
-    _gas_ppl_shr = (pp.out("gas_ppl") / pp.out(["gas_cc", "gas_ppl"])).fillna(0)
-
-    inpfilter = {"level": ["water_supply"], "commodity": ["freshwater_supply"]}
-    outfilter = {"level": ["secondary"], "commodity": ["electr"]}
-    emiffilter = {"emission": ["fresh_wastewater"]}
-
-    # --------------------
-    # Once Through Cooling
-    # --------------------
-
-    _gas_ot_fresh_wo_CCS = pp.inp(
-        ["gas_cc__ot_fresh", "gas_ppl__ot_fresh"], units, inpfilter=inpfilter
-    )
-
-    _gas_ot_fresh_w_CCS = pp.inp(["gas_cc_ccs__ot_fresh"], units, inpfilter=inpfilter)
-
-    _coal_ot_fresh_wo_CCS = pp.inp(
-        [
-            "coal_adv__ot_fresh",
-            "coal_ppl__ot_fresh",
-            "coal_ppl_u__ot_fresh",
-            "igcc__ot_fresh",
-        ],
-        units,
-        inpfilter=inpfilter,
-    )
-
-    _coal_ot_fresh_w_CCS = pp.inp(
-        ["coal_adv_ccs__ot_fresh", "igcc_ccs__ot_fresh"], units, inpfilter=inpfilter
-    )
-
-    _oil_ot_fresh_wo_CCS = pp.inp(
-        ["foil_ppl__ot_fresh", "loil_cc__ot_fresh", "loil_ppl__ot_fresh"],
-        units,
-        inpfilter=inpfilter,
-    )
-
-    _bio_ot_fresh_wo_CCS = pp.inp(
-        ["bio_istig__ot_fresh", "bio_ppl__ot_fresh"], units, inpfilter=inpfilter
-    )
-
-    _bio_ot_fresh_w_CCS = pp.inp(
-        ["bio_istig_ccs__ot_fresh"], units, inpfilter=inpfilter
-    )
-
-    _geo_ot_fresh_wo_CCS = pp.inp(["geo_ppl__ot_fresh"], units, inpfilter=inpfilter)
-
-    _nuc_ot_fresh_wo_CCS = pp.inp(
-        ["nuc_hc__ot_fresh", "nuc_lc__ot_fresh"], units, inpfilter=inpfilter
-    )
-
-    _solar_ot_fresh_wo_CCS = pp.inp(
-        "solar_th_ppl__ot_fresh", units, inpfilter=inpfilter
-    )
-
-    if method == "consumption":
-        _gas_ot_fresh_wo_CCS -= pp.act_emif(
-            ["gas_cc__ot_fresh", "gas_ppl__ot_fresh"],
-            units=units,
-            emiffilter=emiffilter,
-        )
-
-        _gas_ot_fresh_w_CCS -= pp.act_emif(
-            ["gas_cc_ccs__ot_fresh"], units=units, emiffilter=emiffilter
-        )
-
-        _coal_ot_fresh_wo_CCS -= pp.act_emif(
-            [
-                "coal_adv__ot_fresh",
-                "coal_ppl__ot_fresh",
-                "coal_ppl_u__ot_fresh",
-                "igcc__ot_fresh",
-            ],
-            units=units,
-            emiffilter=emiffilter,
-        )
-
-        _coal_ot_fresh_w_CCS -= pp.act_emif(
-            ["coal_adv_ccs__ot_fresh", "igcc_ccs__ot_fresh"],
-            units=units,
-            emiffilter=emiffilter,
-        )
-
-        _oil_ot_fresh_wo_CCS -= pp.act_emif(
-            ["foil_ppl__ot_fresh", "loil_cc__ot_fresh", "loil_ppl__ot_fresh"],
-            units=units,
-            emiffilter=emiffilter,
-        )
-
-        _bio_ot_fresh_wo_CCS -= pp.act_emif(
-            ["bio_istig__ot_fresh", "bio_ppl__ot_fresh"],
-            units=units,
-            emiffilter=emiffilter,
-        )
-
-        _bio_ot_fresh_w_CCS -= pp.act_emif(
-            ["bio_istig_ccs__ot_fresh"], units=units, emiffilter=emiffilter
-        )
-
-        _geo_ot_fresh_wo_CCS -= pp.act_emif(
-            ["geo_ppl__ot_fresh"], units=units, emiffilter=emiffilter
-        )
-
-        _nuc_ot_fresh_wo_CCS -= pp.act_emif(
-            ["nuc_hc__ot_fresh", "nuc_lc__ot_fresh"], units=units, emiffilter=emiffilter
-        )
-
-        _solar_ot_fresh_wo_CCS -= pp.act_emif(
-            ["solar_th_ppl__ot_fresh"], units=units, emiffilter=emiffilter
-        )
-
-    # -----------
-    # Closed Loop
-    # -----------
-
-    _gas_cl_fresh_wo_CCS = pp.inp(
-        ["gas_cc__cl_fresh", "gas_ppl__cl_fresh"], units, inpfilter=inpfilter
-    )
-
-    _gas_cl_fresh_w_CCS = pp.inp(["gas_cc_ccs__cl_fresh"], units, inpfilter=inpfilter)
-
-    _coal_cl_fresh_wo_CCS = pp.inp(
-        [
-            "coal_adv__cl_fresh",
-            "coal_ppl__cl_fresh",
-            "coal_ppl_u__cl_fresh",
-            "igcc__cl_fresh",
-        ],
-        units,
-        inpfilter=inpfilter,
-    )
-
-    _coal_cl_fresh_w_CCS = pp.inp(
-        ["coal_adv_ccs__cl_fresh", "igcc_ccs__cl_fresh"], units, inpfilter=inpfilter
-    )
-
-    _oil_cl_fresh_wo_CCS = pp.inp(
-        ["foil_ppl__cl_fresh", "loil_cc__cl_fresh", "loil_ppl__cl_fresh"],
-        units,
-        inpfilter=inpfilter,
-    )
-
-    _bio_cl_fresh_wo_CCS = pp.inp(
-        ["bio_istig__cl_fresh", "bio_ppl__cl_fresh"], units, inpfilter=inpfilter
-    )
-
-    _bio_cl_fresh_w_CCS = pp.inp(
-        ["bio_istig_ccs__cl_fresh"], units, inpfilter=inpfilter
-    )
-
-    _geo_cl_fresh_wo_CCS = pp.inp(["geo_ppl__cl_fresh"], units, inpfilter=inpfilter)
-
-    _nuc_cl_fresh_wo_CCS = pp.inp(
-        ["nuc_hc__cl_fresh", "nuc_lc__cl_fresh"], units, inpfilter=inpfilter
-    )
-
-    _solar_cl_fresh_wo_CCS = pp.inp(
-        "solar_th_ppl__cl_fresh", units, inpfilter=inpfilter
-    )
-
-    if method == "consumption":
-        _gas_cl_fresh_wo_CCS -= pp.act_emif(
-            ["gas_cc__cl_fresh", "gas_ppl__cl_fresh"],
-            units=units,
-            emiffilter=emiffilter,
-        )
-
-        _gas_cl_fresh_w_CCS -= pp.act_emif(
-            ["gas_cc_ccs__cl_fresh"], units=units, emiffilter=emiffilter
-        )
-
-        _coal_cl_fresh_wo_CCS -= pp.act_emif(
-            [
-                "coal_adv__cl_fresh",
-                "coal_ppl__cl_fresh",
-                "coal_ppl_u__cl_fresh",
-                "igcc__cl_fresh",
-            ],
-            units=units,
-            emiffilter=emiffilter,
-        )
-
-        _coal_cl_fresh_w_CCS -= pp.act_emif(
-            ["coal_adv_ccs__cl_fresh", "igcc_ccs__cl_fresh"],
-            units=units,
-            emiffilter=emiffilter,
-        )
-
-        _oil_cl_fresh_wo_CCS -= pp.act_emif(
-            ["foil_ppl__cl_fresh", "loil_cc__cl_fresh", "loil_ppl__cl_fresh"],
-            units=units,
-            emiffilter=emiffilter,
-        )
-
-        _bio_cl_fresh_wo_CCS -= pp.act_emif(
-            ["bio_istig__cl_fresh", "bio_ppl__cl_fresh"],
-            units=units,
-            emiffilter=emiffilter,
-        )
-
-        _bio_cl_fresh_w_CCS -= pp.act_emif(
-            ["bio_istig_ccs__cl_fresh"], units=units, emiffilter=emiffilter
-        )
-
-        _geo_cl_fresh_wo_CCS -= pp.act_emif(
-            ["geo_ppl__cl_fresh"], units=units, emiffilter=emiffilter
-        )
-
-        _nuc_cl_fresh_wo_CCS -= pp.act_emif(
-            ["nuc_hc__cl_fresh", "nuc_lc__cl_fresh"], units=units, emiffilter=emiffilter
-        )
-
-        _solar_cl_fresh_wo_CCS -= pp.act_emif(
-            ["solar_th_ppl__cl_fresh"], units=units, emiffilter=emiffilter
-        )
-
-    # -----------------------------
-    # Once Through Cooling (SALINE)
-    # -----------------------------
-    sinpfilter = {"level": ["water_supply"], "commodity": ["saline_supply_ppl"]}
-
-    _gas_ot_saline_wo_CCS = pp.inp(
-        ["gas_cc__ot_saline", "gas_ppl__ot_saline"], units, inpfilter=sinpfilter
-    )
-
-    _gas_ot_saline_w_CCS = pp.inp(
-        ["gas_cc_ccs__ot_saline"], units, inpfilter=sinpfilter
-    )
-
-    _coal_ot_saline_wo_CCS = pp.inp(
-        [
-            "coal_adv__ot_saline",
-            "coal_ppl__ot_saline",
-            "coal_ppl_u__ot_saline",
-            "igcc__ot_saline",
-        ],
-        units,
-        inpfilter=sinpfilter,
-    )
-
-    _coal_ot_saline_w_CCS = pp.inp(
-        ["coal_adv_ccs__ot_saline", "igcc_ccs__ot_saline"], units, inpfilter=sinpfilter
-    )
-
-    _oil_ot_saline_wo_CCS = pp.inp(
-        ["foil_ppl__ot_saline", "loil_cc__ot_saline", "loil_ppl__ot_saline"],
-        units,
-        inpfilter=sinpfilter,
-    )
-
-    _bio_ot_saline_wo_CCS = pp.inp(
-        ["bio_istig__ot_saline", "bio_ppl__ot_saline"], units, inpfilter=sinpfilter
-    )
-
-    _bio_ot_saline_w_CCS = pp.inp(
-        ["bio_istig_ccs__ot_saline"], units, inpfilter=sinpfilter
-    )
-
-    _geo_ot_saline_wo_CCS = pp.inp(["geo_ppl__ot_saline"], units, inpfilter=sinpfilter)
-
-    _nuc_ot_saline_wo_CCS = pp.inp(
-        ["nuc_hc__ot_saline", "nuc_lc__ot_saline"], units, inpfilter=sinpfilter
-    )
-
-    _solar_ot_saline_wo_CCS = pp.inp(
-        "solar_th_ppl__ot_saline", units, inpfilter=sinpfilter
-    )
-
-    if method == "consumption":
-        _gas_ot_saline_wo_CCS -= pp.act_emif(
-            ["gas_cc__ot_saline", "gas_ppl__ot_saline"],
-            units=units,
-            emiffilter=emiffilter,
-        )
-
-        _gas_ot_saline_w_CCS -= pp.act_emif(
-            ["gas_cc_ccs__ot_saline"], units=units, emiffilter=emiffilter
-        )
-
-        _coal_ot_saline_wo_CCS -= pp.act_emif(
-            [
-                "coal_adv__ot_saline",
-                "coal_ppl__ot_saline",
-                "coal_ppl_u__ot_saline",
-                "igcc__ot_saline",
-            ],
-            units=units,
-            emiffilter=emiffilter,
-        )
-
-        _coal_ot_saline_w_CCS -= pp.act_emif(
-            ["coal_adv_ccs__ot_saline", "igcc_ccs__ot_saline"],
-            units=units,
-            emiffilter=emiffilter,
-        )
-
-        _oil_ot_saline_wo_CCS -= pp.act_emif(
-            ["foil_ppl__ot_saline", "loil_cc__ot_saline", "loil_ppl__ot_saline"],
-            units=units,
-            emiffilter=emiffilter,
-        )
-
-        _bio_ot_saline_wo_CCS -= pp.act_emif(
-            ["bio_istig__ot_saline", "bio_ppl__ot_saline"],
-            units=units,
-            emiffilter=emiffilter,
-        )
-
-        _bio_ot_saline_w_CCS -= pp.act_emif(
-            ["bio_istig_ccs__ot_saline"], units=units, emiffilter=emiffilter
-        )
-
-        _geo_ot_saline_wo_CCS -= pp.act_emif(
-            ["geo_ppl__ot_saline"], units=units, emiffilter=emiffilter
-        )
-
-        _nuc_ot_saline_wo_CCS -= pp.act_emif(
-            ["nuc_hc__ot_saline", "nuc_lc__ot_saline"],
-            units=units,
-            emiffilter=emiffilter,
-        )
-
-        _solar_ot_saline_wo_CCS -= pp.act_emif(
-            ["solar_th_ppl__ot_saline"], units=units, emiffilter=emiffilter
-        )
-
-    # -----------
-    # Dry cooling
-    # -----------
-
-    _gas_air = pp.inp(["gas_cc__air", "gas_ppl__air"], units, inpfilter=inpfilter)
-
-    _coal_air = pp.inp(
-        ["coal_adv__air", "coal_ppl__air", "coal_ppl_u__air", "igcc__air"],
-        units,
-        inpfilter=inpfilter,
-    )
-
-    _oil_air = pp.inp(
-        ["foil_ppl__air", "loil_cc__air", "loil_ppl__air"], units, inpfilter=inpfilter
-    )
-
-    _bio_air = pp.inp(["bio_istig__air", "bio_ppl__air"], units, inpfilter=inpfilter)
-
-    _geo_air = pp.inp(["geo_ppl__air"], units, inpfilter=inpfilter)
-    _solar_air = pp.inp("solar_th_ppl__air", units, inpfilter=inpfilter)
-
-    # -----------------------
-    # Water use for coal elec
-    # -----------------------
-
-    _Cooling_ele_coal_wCCS = (
-        _coal_ot_fresh_w_CCS + _coal_cl_fresh_w_CCS + _coal_ot_saline_w_CCS
-    )
-
-    _Direct_ele_coal_wCCS = (
-        _pe_elec_wCCSretro(
-            "coal_ppl",
-            "c_ppl_co2scr",
-            group,
-            inpfilter=inpfilter,
-            units=units,
-            _Frac=_Frac,
-        )
-        + _pe_elec_wCCSretro(
-            "igcc", "igcc_co2scr", group, inpfilter=inpfilter, units=units, _Frac=_Frac
-        )
-        + _pe_elec_po_turb(
-            "coal_adv_ccs",
-            group,
-            units,
-            _Frac,
-            inpfilter=inpfilter,
-            outfilter={"commodity": "electr"},
-        )
-        + _pe_elec_po_turb(
-            "igcc_ccs",
-            group,
-            units,
-            _Frac,
-            inpfilter=inpfilter,
-            outfilter={"commodity": "electr"},
-        )
-        + _out_div_eff(
-            ["meth_coal_ccs", "h2_coal_ccs", "syn_liq_ccs"], group, inpfilter, outfilter
-        )
-    )
-
-    vars["Electricity|Coal|w/ CCS"] = _Direct_ele_coal_wCCS + _Cooling_ele_coal_wCCS
-
-    _Cooling_ele_coal_woCCS = (
-        _coal_ot_fresh_wo_CCS
-        + _coal_cl_fresh_wo_CCS
-        + _coal_ot_saline_wo_CCS
-        + _coal_air
-    )
-
-    _Direct_ele_coal_woCCS = (
-        _pe_elec_woCCSretro(
-            "coal_ppl",
-            "c_ppl_co2scr",
-            group,
-            inpfilter=inpfilter,
-            units=units,
-            _Frac=_Frac,
-        )
-        + _pe_elec_woCCSretro(
-            "igcc", "igcc_co2scr", group, inpfilter=inpfilter, units=units, _Frac=_Frac
-        )
-        + _pe_elec_po_turb(
-            "coal_adv",
-            group,
-            units,
-            _Frac,
-            inpfilter=inpfilter,
-            outfilter={"commodity": "electr"},
-        )
-        + _pe_elec_po_turb(
-            "coal_ppl_u",
-            group,
-            units,
-            _Frac,
-            inpfilter=inpfilter,
-            outfilter={"commodity": "electr"},
-        )
-        + _out_div_eff(["meth_coal", "h2_coal", "syn_liq"], group, inpfilter, outfilter)
-    )
-
-    vars["Electricity|Coal|w/o CCS"] = _Direct_ele_coal_woCCS + _Cooling_ele_coal_woCCS
-
-    # -----------------------------
-    # Water use for electricity Gas
-    # -----------------------------
-
-    _Cooling_ele_gas_wCCS = (
-        _gas_ot_fresh_w_CCS + _gas_cl_fresh_w_CCS + _gas_ot_saline_w_CCS
-    )
-
-    _Direct_ele_gas_wCCS = (
-        _pe_elec_wCCSretro(
-            "gas_cc",
-            "g_ppl_co2scr",
-            group,
-            inpfilter=inpfilter,
-            units=units,
-            _Frac=_Frac,
-            share=_gas_cc_shr,
-        )
-        + _pe_elec_wCCSretro(
-            "gas_ppl",
-            "g_ppl_co2scr",
-            group,
-            inpfilter=inpfilter,
-            units=units,
-            _Frac=_Frac,
-            share=_gas_ppl_shr,
-        )
-        + _pe_elec_wCCSretro(
-            "gas_htfc",
-            "gfc_co2scr",
-            group,
-            inpfilter=inpfilter,
-            units=units,
-            _Frac=_Frac,
-        )
-        + _pe_elec_po_turb(
-            "gas_cc_ccs",
-            group,
-            units,
-            _Frac,
-            inpfilter=inpfilter,
-            outfilter={"commodity": "electr"},
-        )
-        + _out_div_eff(["h2_smr_ccs"], group, inpfilter, outfilter)
-    )
-
-    vars["Electricity|Gas|w/ CCS"] = (_Direct_ele_gas_wCCS + _Cooling_ele_gas_wCCS) * (
-        1 - _BGas_share
-    )
-
-    _Cooling_ele_gas_woCCS = (
-        _gas_ot_fresh_wo_CCS + _gas_cl_fresh_wo_CCS + _gas_ot_saline_wo_CCS + _gas_air
-    )
-
-    _Direct_ele_gas_woCCS = (
-        _pe_elec_woCCSretro(
-            "gas_ppl",
-            "g_ppl_co2scr",
-            group,
-            inpfilter=inpfilter,
-            units=units,
-            _Frac=_Frac,
-            share=_gas_ppl_shr,
-        )
-        + _pe_elec_woCCSretro(
-            "gas_cc",
-            "g_ppl_co2scr",
-            group,
-            inpfilter=inpfilter,
-            units=units,
-            _Frac=_Frac,
-            share=_gas_cc_shr,
-        )
-        + _pe_elec_woCCSretro(
-            "gas_htfc",
-            "gfc_co2scr",
-            group,
-            inpfilter=inpfilter,
-            units=units,
-            _Frac=_Frac,
-        )
-        + _pe_elec_po_turb(
-            "gas_ct",
-            group,
-            units,
-            _Frac,
-            inpfilter=inpfilter,
-            outfilter={"commodity": "electr"},
-        )
-        + _out_div_eff(["h2_smr"], group, inpfilter, outfilter)
-    )
-
-    vars["Electricity|Gas|w/o CCS"] = (
-        _Direct_ele_gas_woCCS + _Cooling_ele_gas_woCCS
-    ) * (1 - _BGas_share)
-
-    # -----------------------------
-    # Water use for electricity bio
-    # -----------------------------
-
-    _Cooling_ele_bio_wCCS = (
-        _bio_ot_fresh_w_CCS + _bio_cl_fresh_w_CCS + _bio_ot_saline_w_CCS
-    )
-
-    _Direct_ele_bio_wCCS = (
-        _pe_elec_wCCSretro(
-            "bio_ppl",
-            "bio_ppl_co2scr",
-            group,
-            inpfilter=inpfilter,
-            units=units,
-            _Frac=_Frac,
-        )
-        + _pe_elec_po_turb(
-            "bio_istig_ccs",
-            group,
-            units,
-            _Frac,
-            inpfilter=inpfilter,
-            outfilter={"commodity": "electr"},
-        )
-        + _out_div_eff(
-            ["h2_bio_ccs", "eth_bio_ccs", "liq_bio_ccs"], group, inpfilter, outfilter
-        )
-    )
-
-    vars["Electricity|Biomass|w/ CCS"] = (
-        _Direct_ele_bio_wCCS
-        + _Cooling_ele_bio_wCCS
-        + (_Direct_ele_gas_wCCS + _Cooling_ele_gas_wCCS) * _BGas_share
-    )
-
-    _Cooling_ele_bio_woCCS = (
-        _bio_ot_fresh_wo_CCS + _bio_cl_fresh_wo_CCS + _bio_ot_saline_wo_CCS + _bio_air
-    )
-
-    _Direct_ele_bio_woCCS = (
-        _pe_elec_woCCSretro(
-            "bio_ppl",
-            "bio_ppl_co2scr",
-            group,
-            inpfilter=inpfilter,
-            units=units,
-            _Frac=_Frac,
-        )
-        + _pe_elec_po_turb(
-            "bio_istig",
-            group,
-            units,
-            _Frac,
-            inpfilter=inpfilter,
-            outfilter={"commodity": "electr"},
-        )
-        + _out_div_eff(["h2_bio", "eth_bio", "liq_bio"], group, inpfilter, outfilter)
-    )
-
-    vars["Electricity|Biomass|w/o CCS"] = (
-        _Direct_ele_bio_woCCS
-        + _Cooling_ele_bio_woCCS
-        + (_Direct_ele_gas_woCCS + _Cooling_ele_gas_woCCS) * _BGas_share
-    )
-
-    # -----------------------------
-    # Water use for electricity oil
-    # -----------------------------
-
-    _Cooling_ele_oil = (
-        _oil_ot_fresh_wo_CCS + _oil_cl_fresh_wo_CCS + _oil_ot_saline_wo_CCS + _oil_air
-    )
-
-    _Direct_ele_oil = (
-        _pe_elec_po_turb(
-            "foil_ppl",
-            group,
-            units,
-            _Frac,
-            inpfilter=inpfilter,
-            outfilter={"commodity": "electr"},
-        )
-        + _pe_elec_po_turb(
-            "loil_ppl",
-            group,
-            units,
-            _Frac,
-            inpfilter=inpfilter,
-            outfilter={"commodity": "electr"},
-        )
-        + _pe_elec_po_turb(
-            "oil_ppl",
-            group,
-            units,
-            _Frac,
-            inpfilter=inpfilter,
-            outfilter={"commodity": "electr"},
-        )
-        + _pe_elec_po_turb(
-            "loil_cc",
-            group,
-            units,
-            _Frac,
-            inpfilter=inpfilter,
-            outfilter={"commodity": "electr"},
-        )
-    )
-
-    vars["Electricity|Oil"] = _Direct_ele_oil + _Cooling_ele_oil
-
-    # ------------------------------------
-    # Water use for electricity geothermal
-    # ------------------------------------
-
-    _Cooling_ele_geo = (
-        _geo_ot_fresh_wo_CCS + _geo_cl_fresh_wo_CCS + _geo_ot_saline_wo_CCS + _geo_air
-    )
-
-    _Direct_ele_geo = _pe_elec_po_turb(
-        "geo_ppl",
-        group,
-        units,
-        _Frac,
-        inpfilter=inpfilter,
-        outfilter={"commodity": "electr"},
-    )
-
-    vars["Electricity|Geothermal"] = _Direct_ele_geo + _Cooling_ele_geo
-
-    # ------------------------------------
-    # Water use for electricity hydropower
-    # ------------------------------------
-
-    # Note Wenji 03.05.2017: Hydropower uses a different commodity than the
-    # other technologies.
-
-    vars["Electricity|Hydro"] = pp.inp(
-        ["hydro_lc", "hydro_hc"],
-        units,
-        inpfilter={"level": ["water_supply"], "commodity": ["freshwater_instream"]},
-    )
-
-    # ---------------------------------
-    # Water use for electricity nuclear
-    # ---------------------------------
-
-    _Cooling_ele_nuc = (
-        _nuc_ot_fresh_wo_CCS + _nuc_cl_fresh_wo_CCS + _nuc_ot_saline_wo_CCS
-    )
-
-    _Direct_ele_nuc = (
-        _pe_elec_po_turb(
-            "nuc_lc",
-            group,
-            units,
-            _Frac,
-            inpfilter=inpfilter,
-            outfilter={"commodity": "electr"},
-        )
-        + _pe_elec_po_turb(
-            "nuc_hc",
-            group,
-            units,
-            _Frac,
-            inpfilter=inpfilter,
-            outfilter={"commodity": "electr"},
-        )
-        + _pe_elec_po_turb(
-            "nuc_fbr",
-            group,
-            units,
-            _Frac,
-            inpfilter=inpfilter,
-            outfilter={"commodity": "electr"},
-        )
-    )
-
-    vars["Electricity|Nuclear"] = _Direct_ele_nuc + _Cooling_ele_nuc
-
-    # ------------------------------
-    # Water use for electricity wind
-    # ------------------------------
-
-    # Note Wenji 02.05.2017: In the GDX file it seems that these technologies
-    # have no input
-
-    Wind_onshore = pp.inp(
-        [
-            "wind_res1",
-            "wind_res2",
-            "wind_res3",
-            "wind_res4",
-            "wind_res_hist_2005",
-            "wind_res_hist_2010",
-            "wind_res_hist_2015",
-            "wind_res_hist_2020",
-        ],
-        units,
-        inpfilter=inpfilter,
-    )
-
-    Wind_offshore = pp.inp(
-        [
-            "wind_ref1",
-            "wind_ref2",
-            "wind_ref3",
-            "wind_ref4",
-            "wind_ref5",
-            "wind_ref_hist_2005",
-            "wind_ref_hist_2010",
-            "wind_ref_hist_2015",
-            "wind_ref_hist_2020",
-        ],
-        units,
-        inpfilter=inpfilter,
-    )
-
-    vars["Electricity|Wind"] = Wind_onshore + Wind_offshore
-
-    # -------------------------------
-    # Water use for electricity solar
-    # -------------------------------
-
-    _Cooling_ele_solar_th = (
-        _solar_ot_fresh_wo_CCS
-        + _solar_cl_fresh_wo_CCS
-        + _solar_ot_saline_wo_CCS
-        + _solar_air
-    )
-
-    _Direct_ele_solar_th = pp.inp(
-        [
-            "solar_th_ppl",
-            "csp_sm1_res",
-            "csp_sm1_res1",
-            "csp_sm1_res2",
-            "csp_sm1_res3",
-            "csp_sm1_res4",
-            "csp_sm1_res5",
-            "csp_sm1_res6",
-            "csp_sm1_res7",
-            "csp_res_hist_2005",
-            "csp_res_hist_2010",
-            "csp_res_hist_2015",
-            "csp_res_hist_2020",
-            "csp_sm3_res",
-            "csp_sm3_res1",
-            "csp_sm3_res2",
-            "csp_sm3_res3",
-            "csp_sm3_res4",
-            "csp_sm3_res5",
-            "csp_sm3_res6",
-            "csp_sm3_res7",
-        ],
-        units,
-        inpfilter=inpfilter,
-    )
-
-    vars["Electricity|Solar|CSP"] = _Direct_ele_solar_th + _Cooling_ele_solar_th
-
-    # Note Wenji 02.05.2017: In the GDX file it seems that these technologies
-    # have no input
-
-    vars["Electricity|Solar|PV"] = pp.inp(
-        [
-            "solar_res1",
-            "solar_res2",
-            "solar_res3",
-            "solar_res4",
-            "solar_res5",
-            "solar_res6",
-            "solar_res7",
-            "solar_res8",
-            "solar_pv_I",
-            "solar_pv_RC",
-            "solar_res_hist_2005",
-            "solar_res_hist_2010",
-            "solar_res_hist_2015",
-            "solar_res_hist_2020",
-        ],
-        units,
-        inpfilter=inpfilter,
-    )
-
-    vars["Electricity|Other"] = pp.inp(
-        ["h2_fc_trp", "h2_fc_I", "h2_fc_RC"], units, inpfilter=inpfilter
-    )
-
-    vars["Electricity|Dry Cooling"] = (
-        _gas_air + _coal_air + _oil_air + _bio_air + _geo_air + _solar_air
-    )
-
-    vars["Electricity|Once Through"] = (
-        _gas_ot_fresh_wo_CCS
-        + _gas_ot_fresh_w_CCS
-        + _coal_ot_fresh_wo_CCS
-        + _coal_ot_fresh_w_CCS
-        + _oil_ot_fresh_wo_CCS
-        + _bio_ot_fresh_wo_CCS
-        + _bio_ot_fresh_w_CCS
-        + _geo_ot_fresh_wo_CCS
-        + _nuc_ot_fresh_wo_CCS
-        + _solar_ot_fresh_wo_CCS
-    )
-
-    vars["Electricity|Sea Cooling"] = (
-        _gas_ot_saline_wo_CCS
-        + _gas_ot_saline_w_CCS
-        + _coal_ot_saline_wo_CCS
-        + _coal_ot_saline_w_CCS
-        + _oil_ot_saline_wo_CCS
-        + _bio_ot_saline_wo_CCS
-        + _bio_ot_saline_w_CCS
-        + _geo_ot_saline_wo_CCS
-        + _nuc_ot_saline_wo_CCS
-        + _solar_ot_saline_wo_CCS
-    )
-
-    vars["Electricity|Wet Tower"] = (
-        _gas_cl_fresh_wo_CCS
-        + _gas_cl_fresh_w_CCS
-        + _coal_cl_fresh_wo_CCS
-        + _coal_cl_fresh_w_CCS
-        + _oil_cl_fresh_wo_CCS
-        + _bio_cl_fresh_wo_CCS
-        + _bio_cl_fresh_w_CCS
-        + _geo_cl_fresh_wo_CCS
-        + _nuc_cl_fresh_wo_CCS
-        + _solar_cl_fresh_wo_CCS
-    )
-
-    # ----------
-    # Extraction
-    # ----------
-
-    vars["Extraction|Coal"] = pp.inp(
-        ["coal_extr", "coal_extr_ch4", "lignite_extr"], units, inpfilter=inpfilter
-    )
-
-    vars["Extraction|Gas"] = pp.inp(
-        [
-            "gas_extr_1",
-            "gas_extr_2",
-            "gas_extr_3",
-            "gas_extr_4",
-            "gas_extr_5",
-            "gas_extr_6",
-            "gas_extr_7",
-            "gas_extr_8",
-        ],
-        units,
-        inpfilter=inpfilter,
-    )
-
-    vars["Extraction|Oil"] = pp.inp(
-        [
-            "oil_extr_1",
-            "oil_extr_2",
-            "oil_extr_3",
-            "oil_extr_4",
-            "oil_extr_5",
-            "oil_extr_6",
-            "oil_extr_7",
-            "oil_extr_8",
-            "oil_extr_1_ch4",
-            "oil_extr_2_ch4",
-            "oil_extr_3_ch4",
-            "oil_extr_4_ch4",
-        ],
-        units,
-        inpfilter=inpfilter,
-    )
-
-    vars["Extraction|Uranium"] = pp.inp("Uran_extr", units, inpfilter=inpfilter)
-
-    if method == "consumption":
-        vars["Extraction|Coal"] -= pp.act_emif(
-            ["coal_extr", "coal_extr_ch4", "lignite_extr"],
-            units=units,
-            emiffilter=emiffilter,
-        )
-
-        vars["Extraction|Gas"] -= pp.act_emif(
-            [
-                "gas_extr_1",
-                "gas_extr_2",
-                "gas_extr_3",
-                "gas_extr_4",
-                "gas_extr_5",
-                "gas_extr_6",
-                "gas_extr_7",
-                "gas_extr_8",
-            ],
-            units=units,
-            emiffilter=emiffilter,
-        )
-
-        vars["Extraction|Oil"] -= pp.act_emif(
-            [
-                "oil_extr_1",
-                "oil_extr_2",
-                "oil_extr_3",
-                "oil_extr_4",
-                "oil_extr_5",
-                "oil_extr_6",
-                "oil_extr_7",
-                "oil_extr_8",
-                "oil_extr_1_ch4",
-                "oil_extr_2_ch4",
-                "oil_extr_3_ch4",
-                "oil_extr_4_ch4",
-            ],
-            units=units,
-            emiffilter=emiffilter,
-        )
-
-        vars["Extraction|Uranium"] -= pp.act_emif(
-            "Uran_extr", units=units, emiffilter=emiffilter
-        )
-
-    # -----
-    # Gases
-    # -----
-
-    vars["Gases|Biomass"] = pp.inp("gas_bio", units, inpfilter=inpfilter)
-
-    vars["Gases|Coal"] = pp.inp("coal_gas", units, inpfilter=inpfilter)
-
-    if method == "consumption":
-        vars["Gases|Biomass"] -= pp.act_emif(
-            "gas_bio", units=units, emiffilter=emiffilter
-        )
-
-        vars["Gases|Coal"] -= pp.act_emif(
-            "coal_gas", units=units, emiffilter=emiffilter
-        )
-
-    # ----
-    # Heat
-    # ----
-
-    _Cooling_heat_gas = pp.inp(
-        [
-            "gas_hpl__ot_fresh",
-            "gas_hpl__cl_fresh",
-            "gas_hpl__ot_saline",
-            "gas_hpl__air",
-        ],
-        units,
-        inpfilter=inpfilter,
-    )
-
-    _Direct_heat_gas = pp.inp("gas_hpl", units, inpfilter=inpfilter)
-
-    vars["Heat|Gas"] = _Cooling_heat_gas + _Direct_heat_gas
-
-    _Cooling_heat_geo = pp.inp(
-        [
-            "geo_hpl__ot_fresh",
-            "geo_hpl__cl_fresh",
-            "geo_hpl__ot_saline",
-            "geo_hpl__air",
-        ],
-        units,
-        inpfilter=inpfilter,
-    )
-
-    _Direct_heat_geo = pp.inp("geo_hpl", units, inpfilter=inpfilter)
-
-    vars["Heat|Geothermal"] = _Cooling_heat_geo + _Direct_heat_geo
-
-    _Cooling_heat_bio = pp.inp(
-        [
-            "bio_hpl__ot_fresh",
-            "bio_hpl__cl_fresh",
-            "bio_hpl__ot_saline",
-            "bio_hpl__air",
-        ],
-        units,
-        inpfilter=inpfilter,
-    )
-
-    _Direct_heat_bio = pp.inp("bio_hpl", units, inpfilter=inpfilter)
-
-    vars["Heat|Biomass"] = _Cooling_heat_bio + _Direct_heat_bio
-
-    vars["Heat|Coal"] = pp.inp("coal_hpl", units, inpfilter=inpfilter)
-
-    _Cooling_heat_oil = pp.inp(
-        [
-            "foil_hpl__ot_fresh",
-            "foil_hpl__cl_fresh",
-            "foil_hpl__ot_saline",
-            "foil_hpl__air",
-        ],
-        units,
-        inpfilter=inpfilter,
-    )
-
-    _Direct_heat_oil = pp.inp("foil_hpl", units, inpfilter=inpfilter)
-
-    vars["Heat|Oil"] = _Cooling_heat_oil + _Direct_heat_oil
-
-    vars["Heat|Other"] = pp.inp("po_turbine", units, inpfilter=inpfilter)
-
-    if method == "consumption":
-        vars["Heat|Gas"] = vars["Heat|Gas"] - pp.act_emif(
-            [
-                "gas_hpl__ot_fresh",
-                "gas_hpl__cl_fresh",
-                "gas_hpl__ot_saline",
-                "gas_hpl__air",
-            ],
-            units=units,
-            emiffilter=emiffilter,
-        )
-
-        vars["Heat|Geothermal"] -= pp.act_emif(
-            [
-                "geo_hpl__ot_fresh",
-                "geo_hpl__cl_fresh",
-                "geo_hpl__ot_saline",
-                "geo_hpl__air",
-            ],
-            units=units,
-            emiffilter=emiffilter,
-        )
-
-        vars["Heat|Biomass"] -= pp.act_emif(
-            [
-                "bio_hpl__ot_fresh",
-                "bio_hpl__cl_fresh",
-                "bio_hpl__ot_saline",
-                "bio_hpl__air",
-            ],
-            units=units,
-            emiffilter=emiffilter,
-        )
-
-        vars["Heat|Coal"] -= pp.act_emif("coal_hpl", units=units, emiffilter=emiffilter)
-
-        vars["Heat|Oil"] -= pp.act_emif(
-            [
-                "foil_hpl__ot_fresh",
-                "foil_hpl__cl_fresh",
-                "foil_hpl__ot_saline",
-                "foil_hpl__air",
-            ],
-            units=units,
-            emiffilter=emiffilter,
-        )
-
-        vars["Heat|Other"] -= pp.act_emif(
-            "po_turbine", units=units, emiffilter=emiffilter
-        )
-
-    # --------
-    # Hydrogen
-    # --------
-
-    hydrogen_outputfilter = {"level": ["secondary"], "commodity": ["hydrogen"]}
-
-    vars["Hydrogen|Biomass|w/ CCS"] = _out_div_eff(
-        "h2_bio_ccs", group, inpfilter, hydrogen_outputfilter
-    )
-
-    vars["Hydrogen|Biomass|w/o CCS"] = _out_div_eff(
-        "h2_bio", group, inpfilter, hydrogen_outputfilter
-    )
-
-    vars["Hydrogen|Coal|w/ CCS"] = _out_div_eff(
-        "h2_coal_ccs", group, inpfilter, hydrogen_outputfilter
-    )
-
-    vars["Hydrogen|Coal|w/o CCS"] = _out_div_eff(
-        "h2_coal", group, inpfilter, hydrogen_outputfilter
-    )
-
-    vars["Hydrogen|Gas|w/ CCS"] = _out_div_eff(
-        "h2_smr_ccs", group, inpfilter, hydrogen_outputfilter
-    )
-
-    vars["Hydrogen|Gas|w/o CCS"] = _out_div_eff(
-        "h2_smr", group, inpfilter, hydrogen_outputfilter
-    )
-
-    vars["Hydrogen|Electricity"] = _out_div_eff(
-        "h2_elec", group, inpfilter, hydrogen_outputfilter
-    )
-
-    if method == "consumption":
-        vars["Hydrogen|Biomass|w/ CCS"] -= pp.act_emif(
-            "h2_bio_ccs", units=units, emiffilter=emiffilter
-        )
-
-        vars["Hydrogen|Biomass|w/o CCS"] -= pp.act_emif(
-            "h2_bio", units=units, emiffilter=emiffilter
-        )
-
-        vars["Hydrogen|Coal|w/ CCS"] -= pp.act_emif(
-            "h2_coal_ccs", units=units, emiffilter=emiffilter
-        )
-
-        vars["Hydrogen|Coal|w/o CCS"] -= pp.act_emif(
-            "h2_coal", units=units, emiffilter=emiffilter
-        )
-
-        vars["Hydrogen|Gas|w/ CCS"] -= pp.act_emif(
-            "h2_smr_ccs", units=units, emiffilter=emiffilter
-        )
-
-        vars["Hydrogen|Gas|w/o CCS"] -= pp.act_emif(
-            "h2_smr", units=units, emiffilter=emiffilter
-        )
-
-        vars["Hydrogen|Electricity"] -= pp.act_emif(
-            "h2_elec", units=units, emiffilter=emiffilter
-        )
-
-    # --------------------
-    # Irrigation water use
-    # --------------------
-
-    vars["Irrigation"] = (
-        pp.land_out(
-            lu_out_filter={
-                "level": ["land_use_reporting"],
-                "commodity": ["Water|Withdrawal|Irrigation"],
-            }
-        )
-        * 0.001
-    )
-
-    vars["Irrigation|Cereals"] = (
-        pp.land_out(
-            lu_out_filter={
-                "level": ["land_use_reporting"],
-                "commodity": ["Water|Withdrawal|Irrigation|Cereals"],
-            }
-        )
-        * 0.001
-    )
-
-    vars["Irrigation|Oilcrops"] = (
-        pp.land_out(
-            lu_out_filter={
-                "level": ["land_use_reporting"],
-                "commodity": ["Water|Withdrawal|Irrigation|Oilcrops"],
-            }
-        )
-        * 0.001
-    )
-
-    vars["Irrigation|Sugarcrops"] = (
-        pp.land_out(
-            lu_out_filter={
-                "level": ["land_use_reporting"],
-                "commodity": ["Water|Withdrawal|Irrigation|Sugarcrops"],
-            }
-        )
-        * 0.001
-    )
-
-    if method == "consumption":
-        vars["Irrigation"] = pp_utils._make_zero()
-        vars["Irrigation|Cereals"] = pp_utils._make_zero()
-        vars["Irrigation|Oilcrops"] = pp_utils._make_zero()
-        vars["Irrigation|Sugarcrops"] = pp_utils._make_zero()
-
-    # -----------
-    # Bio ethanol
-    # -----------
-
-    bio_liquid_outfilter = {"level": ["primary"], "commodity": ["ethanol"]}
-
-    vars["Liquids|Biomass|w/ CCS"] = _out_div_eff(
-        ["eth_bio_ccs", "liq_bio_ccs"], group, inpfilter, bio_liquid_outfilter
-    )
-
-    vars["Liquids|Biomass|w/o CCS"] = _out_div_eff(
-        ["eth_bio", "liq_bio"], group, inpfilter, bio_liquid_outfilter
-    )
-
-    if method == "consumption":
-        vars["Liquids|Biomass|w/ CCS"] -= pp.act_emif(
-            ["eth_bio_ccs", "liq_bio_ccs"], units=units, emiffilter=emiffilter
-        )
-
-        vars["Liquids|Biomass|w/o CCS"] -= pp.act_emif(
-            ["eth_bio", "liq_bio"], units=units, emiffilter=emiffilter
-        )
-
-    # ---------------------------
-    # Synthetic liquids from coal
-    # ---------------------------
-
-    # Note OFR 20210731: The filter below seems to be incorrect and hence was
-    # corrected.
-    # syn_liquid_outfilter = {"level": ["primary"],
-    #                         "commodity": ["methanol"]}
-
-    syn_liquid_outfilter = {
-        "level": ["secondary"],
-        "commodity": ["methanol", "lightoil"],
-    }
-
-    vars["Liquids|Coal|w/ CCS"] = _out_div_eff(
-        ["meth_coal_ccs", "syn_liq_ccs"], group, inpfilter, syn_liquid_outfilter
-    )
-
-    vars["Liquids|Coal|w/o CCS"] = _out_div_eff(
-        ["meth_coal", "syn_liq"], group, inpfilter, syn_liquid_outfilter
-    )
-
-    vars["Liquids|Gas|w/ CCS"] = _out_div_eff(
-        ["meth_ng_ccs"], group, inpfilter, syn_liquid_outfilter
-    )
-
-    vars["Liquids|Gas|w/o CCS"] = _out_div_eff(
-        ["meth_ng"], group, inpfilter, syn_liquid_outfilter
-    )
-
-    if method == "consumption":
-        vars["Liquids|Coal|w/ CCS"] -= pp.act_emif(
-            ["meth_coal_ccs", "syn_liq_ccs"], units=units, emiffilter=emiffilter
-        )
-
-        vars["Liquids|Coal|w/o CCS"] -= pp.act_emif(
-            ["meth_coal", "syn_liq"], units=units, emiffilter=emiffilter
-        )
-
-        vars["Liquids|Gas|w/ CCS"] -= pp.act_emif(
-            "meth_ng_ccs", units=units, emiffilter=emiffilter
-        )
-
-        vars["Liquids|Gas|w/o CCS"] -= pp.act_emif(
-            "meth_ng", units=units, emiffilter=emiffilter
-        )
-
-    # ----------
-    # Refineries
-    # ----------
-
-    loil_filter = {"level": ["secondary"], "commodity": ["lightoil"]}
-    foil_filter = {"level": ["secondary"], "commodity": ["fueloil"]}
-
-    vars["Liquids|Oil"] = _out_div_eff(
-        ["ref_lol", "ref_hil"], group, inpfilter, loil_filter
-    ) + _out_div_eff(["ref_lol", "ref_hil"], group, inpfilter, foil_filter)
-
-    if method == "consumption":
-        vars["Liquids|Oil"] -= pp.act_emif(
-            ["ref_lol", "ref_hil"], units=units, emiffilter=emiffilter
-        )
-
-    df = pp_utils.make_outputdf(vars, units)
-    return df
+# @_register
+# def retr_water_use(units, method):
+#     """Water: Withdrawal or Consumption.
+
+#     Parameters
+#     ----------
+#     units : str
+#         Units to which variables should be converted.
+#     method : str
+#         `withdrawal` will calculate the water withdrawn, while
+#         `consumption` will calculate the `withdrawal` and subtrace the
+#         water quantities returned.
+#     """
+
+#     vars = {}
+
+#     if run_history != "True":
+#         group = ["Region", "Mode", "Vintage"]
+#     else:
+#         group = ["Region"]
+
+#     # --------------------------------
+#     # Calculation of helping variables
+#     # --------------------------------
+
+#     _Cogen = pp.inp("po_turbine", inpfilter={"commodity": ["electr"]})
+
+#     _Potential = pp.act_rel(
+#         [
+#             "coal_ppl_u",
+#             "coal_ppl",
+#             "coal_adv",
+#             "coal_adv_ccs",
+#             "foil_ppl",
+#             "loil_ppl",
+#             "loil_cc",
+#             "gas_ppl",
+#             "gas_ct",
+#             "gas_cc",
+#             "gas_cc_ccs",
+#             "gas_htfc",
+#             "bio_ppl",
+#             "bio_istig",
+#             "bio_istig_ccs",
+#             "igcc",
+#             "igcc_ccs",
+#             "nuc_lc",
+#             "nuc_hc",
+#             "geo_ppl",
+#         ],
+#         relfilter={"relation": ["pass_out_trb"]},
+#     )
+
+#     _Biogas = pp.out("gas_bio")
+
+#     _gas_inp_tecs = [
+#         "gas_ppl",
+#         "gas_cc",
+#         "gas_cc_ccs",
+#         "gas_ct",
+#         "gas_htfc",
+#         "gas_hpl",
+#         "meth_ng",
+#         "meth_ng_ccs",
+#         "h2_smr",
+#         "h2_smr_ccs",
+#         "gas_t_d",
+#         "gas_t_d_ch4",
+#     ]
+
+#     _totgas = pp.inp(_gas_inp_tecs, inpfilter={"commodity": ["gas"]})
+#     _Frac = (_Cogen / _Potential).fillna(0)
+#     _BGas_share = (_Biogas / _totgas).fillna(0)
+
+#     # Calculate shares for ppl feeding into g_ppl_co2scr (gas_cc and gas_ppl)
+#     _gas_cc_shr = (pp.out("gas_cc") / pp.out(["gas_cc", "gas_ppl"])).fillna(0)
+
+#     _gas_ppl_shr = (pp.out("gas_ppl") / pp.out(["gas_cc", "gas_ppl"])).fillna(0)
+
+#     inpfilter = {"level": ["water_supply"], "commodity": ["freshwater_supply"]}
+#     outfilter = {"level": ["secondary"], "commodity": ["electr"]}
+#     emiffilter = {"emission": ["fresh_wastewater"]}
+
+#     # --------------------
+#     # Once Through Cooling
+#     # --------------------
+
+#     _gas_ot_fresh_wo_CCS = pp.inp(
+#         ["gas_cc__ot_fresh", "gas_ppl__ot_fresh"], units, inpfilter=inpfilter
+#     )
+
+#     _gas_ot_fresh_w_CCS = pp.inp(["gas_cc_ccs__ot_fresh"], units, inpfilter=inpfilter)
+
+#     _coal_ot_fresh_wo_CCS = pp.inp(
+#         [
+#             "coal_adv__ot_fresh",
+#             "coal_ppl__ot_fresh",
+#             "coal_ppl_u__ot_fresh",
+#             "igcc__ot_fresh",
+#         ],
+#         units,
+#         inpfilter=inpfilter,
+#     )
+
+#     _coal_ot_fresh_w_CCS = pp.inp(
+#         ["coal_adv_ccs__ot_fresh", "igcc_ccs__ot_fresh"], units, inpfilter=inpfilter
+#     )
+
+#     _oil_ot_fresh_wo_CCS = pp.inp(
+#         ["foil_ppl__ot_fresh", "loil_cc__ot_fresh", "loil_ppl__ot_fresh"],
+#         units,
+#         inpfilter=inpfilter,
+#     )
+
+#     _bio_ot_fresh_wo_CCS = pp.inp(
+#         ["bio_istig__ot_fresh", "bio_ppl__ot_fresh"], units, inpfilter=inpfilter
+#     )
+
+#     _bio_ot_fresh_w_CCS = pp.inp(
+#         ["bio_istig_ccs__ot_fresh"], units, inpfilter=inpfilter
+#     )
+
+#     _geo_ot_fresh_wo_CCS = pp.inp(["geo_ppl__ot_fresh"], units, inpfilter=inpfilter)
+
+#     _nuc_ot_fresh_wo_CCS = pp.inp(
+#         ["nuc_hc__ot_fresh", "nuc_lc__ot_fresh"], units, inpfilter=inpfilter
+#     )
+
+#     _solar_ot_fresh_wo_CCS = pp.inp(
+#         "solar_th_ppl__ot_fresh", units, inpfilter=inpfilter
+#     )
+
+#     if method == "consumption":
+#         _gas_ot_fresh_wo_CCS -= pp.act_emif(
+#             ["gas_cc__ot_fresh", "gas_ppl__ot_fresh"],
+#             units=units,
+#             emiffilter=emiffilter,
+#         )
+
+#         _gas_ot_fresh_w_CCS -= pp.act_emif(
+#             ["gas_cc_ccs__ot_fresh"], units=units, emiffilter=emiffilter
+#         )
+
+#         _coal_ot_fresh_wo_CCS -= pp.act_emif(
+#             [
+#                 "coal_adv__ot_fresh",
+#                 "coal_ppl__ot_fresh",
+#                 "coal_ppl_u__ot_fresh",
+#                 "igcc__ot_fresh",
+#             ],
+#             units=units,
+#             emiffilter=emiffilter,
+#         )
+
+#         _coal_ot_fresh_w_CCS -= pp.act_emif(
+#             ["coal_adv_ccs__ot_fresh", "igcc_ccs__ot_fresh"],
+#             units=units,
+#             emiffilter=emiffilter,
+#         )
+
+#         _oil_ot_fresh_wo_CCS -= pp.act_emif(
+#             ["foil_ppl__ot_fresh", "loil_cc__ot_fresh", "loil_ppl__ot_fresh"],
+#             units=units,
+#             emiffilter=emiffilter,
+#         )
+
+#         _bio_ot_fresh_wo_CCS -= pp.act_emif(
+#             ["bio_istig__ot_fresh", "bio_ppl__ot_fresh"],
+#             units=units,
+#             emiffilter=emiffilter,
+#         )
+
+#         _bio_ot_fresh_w_CCS -= pp.act_emif(
+#             ["bio_istig_ccs__ot_fresh"], units=units, emiffilter=emiffilter
+#         )
+
+#         _geo_ot_fresh_wo_CCS -= pp.act_emif(
+#             ["geo_ppl__ot_fresh"], units=units, emiffilter=emiffilter
+#         )
+
+#         _nuc_ot_fresh_wo_CCS -= pp.act_emif(
+#             ["nuc_hc__ot_fresh", "nuc_lc__ot_fresh"], units=units, emiffilter=emiffilter
+#         )
+
+#         _solar_ot_fresh_wo_CCS -= pp.act_emif(
+#             ["solar_th_ppl__ot_fresh"], units=units, emiffilter=emiffilter
+#         )
+
+#     # -----------
+#     # Closed Loop
+#     # -----------
+
+#     _gas_cl_fresh_wo_CCS = pp.inp(
+#         ["gas_cc__cl_fresh", "gas_ppl__cl_fresh"], units, inpfilter=inpfilter
+#     )
+
+#     _gas_cl_fresh_w_CCS = pp.inp(["gas_cc_ccs__cl_fresh"], units, inpfilter=inpfilter)
+
+#     _coal_cl_fresh_wo_CCS = pp.inp(
+#         [
+#             "coal_adv__cl_fresh",
+#             "coal_ppl__cl_fresh",
+#             "coal_ppl_u__cl_fresh",
+#             "igcc__cl_fresh",
+#         ],
+#         units,
+#         inpfilter=inpfilter,
+#     )
+
+#     _coal_cl_fresh_w_CCS = pp.inp(
+#         ["coal_adv_ccs__cl_fresh", "igcc_ccs__cl_fresh"], units, inpfilter=inpfilter
+#     )
+
+#     _oil_cl_fresh_wo_CCS = pp.inp(
+#         ["foil_ppl__cl_fresh", "loil_cc__cl_fresh", "loil_ppl__cl_fresh"],
+#         units,
+#         inpfilter=inpfilter,
+#     )
+
+#     _bio_cl_fresh_wo_CCS = pp.inp(
+#         ["bio_istig__cl_fresh", "bio_ppl__cl_fresh"], units, inpfilter=inpfilter
+#     )
+
+#     _bio_cl_fresh_w_CCS = pp.inp(
+#         ["bio_istig_ccs__cl_fresh"], units, inpfilter=inpfilter
+#     )
+
+#     _geo_cl_fresh_wo_CCS = pp.inp(["geo_ppl__cl_fresh"], units, inpfilter=inpfilter)
+
+#     _nuc_cl_fresh_wo_CCS = pp.inp(
+#         ["nuc_hc__cl_fresh", "nuc_lc__cl_fresh"], units, inpfilter=inpfilter
+#     )
+
+#     _solar_cl_fresh_wo_CCS = pp.inp(
+#         "solar_th_ppl__cl_fresh", units, inpfilter=inpfilter
+#     )
+
+#     if method == "consumption":
+#         _gas_cl_fresh_wo_CCS -= pp.act_emif(
+#             ["gas_cc__cl_fresh", "gas_ppl__cl_fresh"],
+#             units=units,
+#             emiffilter=emiffilter,
+#         )
+
+#         _gas_cl_fresh_w_CCS -= pp.act_emif(
+#             ["gas_cc_ccs__cl_fresh"], units=units, emiffilter=emiffilter
+#         )
+
+#         _coal_cl_fresh_wo_CCS -= pp.act_emif(
+#             [
+#                 "coal_adv__cl_fresh",
+#                 "coal_ppl__cl_fresh",
+#                 "coal_ppl_u__cl_fresh",
+#                 "igcc__cl_fresh",
+#             ],
+#             units=units,
+#             emiffilter=emiffilter,
+#         )
+
+#         _coal_cl_fresh_w_CCS -= pp.act_emif(
+#             ["coal_adv_ccs__cl_fresh", "igcc_ccs__cl_fresh"],
+#             units=units,
+#             emiffilter=emiffilter,
+#         )
+
+#         _oil_cl_fresh_wo_CCS -= pp.act_emif(
+#             ["foil_ppl__cl_fresh", "loil_cc__cl_fresh", "loil_ppl__cl_fresh"],
+#             units=units,
+#             emiffilter=emiffilter,
+#         )
+
+#         _bio_cl_fresh_wo_CCS -= pp.act_emif(
+#             ["bio_istig__cl_fresh", "bio_ppl__cl_fresh"],
+#             units=units,
+#             emiffilter=emiffilter,
+#         )
+
+#         _bio_cl_fresh_w_CCS -= pp.act_emif(
+#             ["bio_istig_ccs__cl_fresh"], units=units, emiffilter=emiffilter
+#         )
+
+#         _geo_cl_fresh_wo_CCS -= pp.act_emif(
+#             ["geo_ppl__cl_fresh"], units=units, emiffilter=emiffilter
+#         )
+
+#         _nuc_cl_fresh_wo_CCS -= pp.act_emif(
+#             ["nuc_hc__cl_fresh", "nuc_lc__cl_fresh"], units=units, emiffilter=emiffilter
+#         )
+
+#         _solar_cl_fresh_wo_CCS -= pp.act_emif(
+#             ["solar_th_ppl__cl_fresh"], units=units, emiffilter=emiffilter
+#         )
+
+#     # -----------------------------
+#     # Once Through Cooling (SALINE)
+#     # -----------------------------
+#     sinpfilter = {"level": ["water_supply"], "commodity": ["saline_supply_ppl"]}
+
+#     _gas_ot_saline_wo_CCS = pp.inp(
+#         ["gas_cc__ot_saline", "gas_ppl__ot_saline"], units, inpfilter=sinpfilter
+#     )
+
+#     _gas_ot_saline_w_CCS = pp.inp(
+#         ["gas_cc_ccs__ot_saline"], units, inpfilter=sinpfilter
+#     )
+
+#     _coal_ot_saline_wo_CCS = pp.inp(
+#         [
+#             "coal_adv__ot_saline",
+#             "coal_ppl__ot_saline",
+#             "coal_ppl_u__ot_saline",
+#             "igcc__ot_saline",
+#         ],
+#         units,
+#         inpfilter=sinpfilter,
+#     )
+
+#     _coal_ot_saline_w_CCS = pp.inp(
+#         ["coal_adv_ccs__ot_saline", "igcc_ccs__ot_saline"], units, inpfilter=sinpfilter
+#     )
+
+#     _oil_ot_saline_wo_CCS = pp.inp(
+#         ["foil_ppl__ot_saline", "loil_cc__ot_saline", "loil_ppl__ot_saline"],
+#         units,
+#         inpfilter=sinpfilter,
+#     )
+
+#     _bio_ot_saline_wo_CCS = pp.inp(
+#         ["bio_istig__ot_saline", "bio_ppl__ot_saline"], units, inpfilter=sinpfilter
+#     )
+
+#     _bio_ot_saline_w_CCS = pp.inp(
+#         ["bio_istig_ccs__ot_saline"], units, inpfilter=sinpfilter
+#     )
+
+#     _geo_ot_saline_wo_CCS = pp.inp(["geo_ppl__ot_saline"], units, inpfilter=sinpfilter)
+
+#     _nuc_ot_saline_wo_CCS = pp.inp(
+#         ["nuc_hc__ot_saline", "nuc_lc__ot_saline"], units, inpfilter=sinpfilter
+#     )
+
+#     _solar_ot_saline_wo_CCS = pp.inp(
+#         "solar_th_ppl__ot_saline", units, inpfilter=sinpfilter
+#     )
+
+#     if method == "consumption":
+#         _gas_ot_saline_wo_CCS -= pp.act_emif(
+#             ["gas_cc__ot_saline", "gas_ppl__ot_saline"],
+#             units=units,
+#             emiffilter=emiffilter,
+#         )
+
+#         _gas_ot_saline_w_CCS -= pp.act_emif(
+#             ["gas_cc_ccs__ot_saline"], units=units, emiffilter=emiffilter
+#         )
+
+#         _coal_ot_saline_wo_CCS -= pp.act_emif(
+#             [
+#                 "coal_adv__ot_saline",
+#                 "coal_ppl__ot_saline",
+#                 "coal_ppl_u__ot_saline",
+#                 "igcc__ot_saline",
+#             ],
+#             units=units,
+#             emiffilter=emiffilter,
+#         )
+
+#         _coal_ot_saline_w_CCS -= pp.act_emif(
+#             ["coal_adv_ccs__ot_saline", "igcc_ccs__ot_saline"],
+#             units=units,
+#             emiffilter=emiffilter,
+#         )
+
+#         _oil_ot_saline_wo_CCS -= pp.act_emif(
+#             ["foil_ppl__ot_saline", "loil_cc__ot_saline", "loil_ppl__ot_saline"],
+#             units=units,
+#             emiffilter=emiffilter,
+#         )
+
+#         _bio_ot_saline_wo_CCS -= pp.act_emif(
+#             ["bio_istig__ot_saline", "bio_ppl__ot_saline"],
+#             units=units,
+#             emiffilter=emiffilter,
+#         )
+
+#         _bio_ot_saline_w_CCS -= pp.act_emif(
+#             ["bio_istig_ccs__ot_saline"], units=units, emiffilter=emiffilter
+#         )
+
+#         _geo_ot_saline_wo_CCS -= pp.act_emif(
+#             ["geo_ppl__ot_saline"], units=units, emiffilter=emiffilter
+#         )
+
+#         _nuc_ot_saline_wo_CCS -= pp.act_emif(
+#             ["nuc_hc__ot_saline", "nuc_lc__ot_saline"],
+#             units=units,
+#             emiffilter=emiffilter,
+#         )
+
+#         _solar_ot_saline_wo_CCS -= pp.act_emif(
+#             ["solar_th_ppl__ot_saline"], units=units, emiffilter=emiffilter
+#         )
+
+#     # -----------
+#     # Dry cooling
+#     # -----------
+
+#     _gas_air = pp.inp(["gas_cc__air", "gas_ppl__air"], units, inpfilter=inpfilter)
+
+#     _coal_air = pp.inp(
+#         ["coal_adv__air", "coal_ppl__air", "coal_ppl_u__air", "igcc__air"],
+#         units,
+#         inpfilter=inpfilter,
+#     )
+
+#     _oil_air = pp.inp(
+#         ["foil_ppl__air", "loil_cc__air", "loil_ppl__air"], units, inpfilter=inpfilter
+#     )
+
+#     _bio_air = pp.inp(["bio_istig__air", "bio_ppl__air"], units, inpfilter=inpfilter)
+
+#     _geo_air = pp.inp(["geo_ppl__air"], units, inpfilter=inpfilter)
+#     _solar_air = pp.inp("solar_th_ppl__air", units, inpfilter=inpfilter)
+
+#     # -----------------------
+#     # Water use for coal elec
+#     # -----------------------
+
+#     _Cooling_ele_coal_wCCS = (
+#         _coal_ot_fresh_w_CCS + _coal_cl_fresh_w_CCS + _coal_ot_saline_w_CCS
+#     )
+
+#     _Direct_ele_coal_wCCS = (
+#         _pe_elec_wCCSretro(
+#             "coal_ppl",
+#             "c_ppl_co2scr",
+#             group,
+#             inpfilter=inpfilter,
+#             units=units,
+#             _Frac=_Frac,
+#         )
+#         + _pe_elec_wCCSretro(
+#             "igcc", "igcc_co2scr", group, inpfilter=inpfilter, units=units, _Frac=_Frac
+#         )
+#         + _pe_elec_po_turb(
+#             "coal_adv_ccs",
+#             group,
+#             units,
+#             _Frac,
+#             inpfilter=inpfilter,
+#             outfilter={"commodity": "electr"},
+#         )
+#         + _pe_elec_po_turb(
+#             "igcc_ccs",
+#             group,
+#             units,
+#             _Frac,
+#             inpfilter=inpfilter,
+#             outfilter={"commodity": "electr"},
+#         )
+#         + _out_div_eff(
+#             ["meth_coal_ccs", "h2_coal_ccs", "syn_liq_ccs"], group, inpfilter, outfilter
+#         )
+#     )
+
+#     vars["Electricity|Coal|w/ CCS"] = _Direct_ele_coal_wCCS + _Cooling_ele_coal_wCCS
+
+#     _Cooling_ele_coal_woCCS = (
+#         _coal_ot_fresh_wo_CCS
+#         + _coal_cl_fresh_wo_CCS
+#         + _coal_ot_saline_wo_CCS
+#         + _coal_air
+#     )
+
+#     _Direct_ele_coal_woCCS = (
+#         _pe_elec_woCCSretro(
+#             "coal_ppl",
+#             "c_ppl_co2scr",
+#             group,
+#             inpfilter=inpfilter,
+#             units=units,
+#             _Frac=_Frac,
+#         )
+#         + _pe_elec_woCCSretro(
+#             "igcc", "igcc_co2scr", group, inpfilter=inpfilter, units=units, _Frac=_Frac
+#         )
+#         + _pe_elec_po_turb(
+#             "coal_adv",
+#             group,
+#             units,
+#             _Frac,
+#             inpfilter=inpfilter,
+#             outfilter={"commodity": "electr"},
+#         )
+#         + _pe_elec_po_turb(
+#             "coal_ppl_u",
+#             group,
+#             units,
+#             _Frac,
+#             inpfilter=inpfilter,
+#             outfilter={"commodity": "electr"},
+#         )
+#         + _out_div_eff(["meth_coal", "h2_coal", "syn_liq"], group, inpfilter, outfilter)
+#     )
+
+#     vars["Electricity|Coal|w/o CCS"] = _Direct_ele_coal_woCCS + _Cooling_ele_coal_woCCS
+
+#     # -----------------------------
+#     # Water use for electricity Gas
+#     # -----------------------------
+
+#     _Cooling_ele_gas_wCCS = (
+#         _gas_ot_fresh_w_CCS + _gas_cl_fresh_w_CCS + _gas_ot_saline_w_CCS
+#     )
+
+#     _Direct_ele_gas_wCCS = (
+#         _pe_elec_wCCSretro(
+#             "gas_cc",
+#             "g_ppl_co2scr",
+#             group,
+#             inpfilter=inpfilter,
+#             units=units,
+#             _Frac=_Frac,
+#             share=_gas_cc_shr,
+#         )
+#         + _pe_elec_wCCSretro(
+#             "gas_ppl",
+#             "g_ppl_co2scr",
+#             group,
+#             inpfilter=inpfilter,
+#             units=units,
+#             _Frac=_Frac,
+#             share=_gas_ppl_shr,
+#         )
+#         + _pe_elec_wCCSretro(
+#             "gas_htfc",
+#             "gfc_co2scr",
+#             group,
+#             inpfilter=inpfilter,
+#             units=units,
+#             _Frac=_Frac,
+#         )
+#         + _pe_elec_po_turb(
+#             "gas_cc_ccs",
+#             group,
+#             units,
+#             _Frac,
+#             inpfilter=inpfilter,
+#             outfilter={"commodity": "electr"},
+#         )
+#         + _out_div_eff(["h2_smr_ccs"], group, inpfilter, outfilter)
+#     )
+
+#     vars["Electricity|Gas|w/ CCS"] = (_Direct_ele_gas_wCCS + _Cooling_ele_gas_wCCS) * (
+#         1 - _BGas_share
+#     )
+
+#     _Cooling_ele_gas_woCCS = (
+#         _gas_ot_fresh_wo_CCS + _gas_cl_fresh_wo_CCS + _gas_ot_saline_wo_CCS + _gas_air
+#     )
+
+#     _Direct_ele_gas_woCCS = (
+#         _pe_elec_woCCSretro(
+#             "gas_ppl",
+#             "g_ppl_co2scr",
+#             group,
+#             inpfilter=inpfilter,
+#             units=units,
+#             _Frac=_Frac,
+#             share=_gas_ppl_shr,
+#         )
+#         + _pe_elec_woCCSretro(
+#             "gas_cc",
+#             "g_ppl_co2scr",
+#             group,
+#             inpfilter=inpfilter,
+#             units=units,
+#             _Frac=_Frac,
+#             share=_gas_cc_shr,
+#         )
+#         + _pe_elec_woCCSretro(
+#             "gas_htfc",
+#             "gfc_co2scr",
+#             group,
+#             inpfilter=inpfilter,
+#             units=units,
+#             _Frac=_Frac,
+#         )
+#         + _pe_elec_po_turb(
+#             "gas_ct",
+#             group,
+#             units,
+#             _Frac,
+#             inpfilter=inpfilter,
+#             outfilter={"commodity": "electr"},
+#         )
+#         + _out_div_eff(["h2_smr"], group, inpfilter, outfilter)
+#     )
+
+#     vars["Electricity|Gas|w/o CCS"] = (
+#         _Direct_ele_gas_woCCS + _Cooling_ele_gas_woCCS
+#     ) * (1 - _BGas_share)
+
+#     # -----------------------------
+#     # Water use for electricity bio
+#     # -----------------------------
+
+#     _Cooling_ele_bio_wCCS = (
+#         _bio_ot_fresh_w_CCS + _bio_cl_fresh_w_CCS + _bio_ot_saline_w_CCS
+#     )
+
+#     _Direct_ele_bio_wCCS = (
+#         _pe_elec_wCCSretro(
+#             "bio_ppl",
+#             "bio_ppl_co2scr",
+#             group,
+#             inpfilter=inpfilter,
+#             units=units,
+#             _Frac=_Frac,
+#         )
+#         + _pe_elec_po_turb(
+#             "bio_istig_ccs",
+#             group,
+#             units,
+#             _Frac,
+#             inpfilter=inpfilter,
+#             outfilter={"commodity": "electr"},
+#         )
+#         + _out_div_eff(
+#             ["h2_bio_ccs", "eth_bio_ccs", "liq_bio_ccs"], group, inpfilter, outfilter
+#         )
+#     )
+
+#     vars["Electricity|Biomass|w/ CCS"] = (
+#         _Direct_ele_bio_wCCS
+#         + _Cooling_ele_bio_wCCS
+#         + (_Direct_ele_gas_wCCS + _Cooling_ele_gas_wCCS) * _BGas_share
+#     )
+
+#     _Cooling_ele_bio_woCCS = (
+#         _bio_ot_fresh_wo_CCS + _bio_cl_fresh_wo_CCS + _bio_ot_saline_wo_CCS + _bio_air
+#     )
+
+#     _Direct_ele_bio_woCCS = (
+#         _pe_elec_woCCSretro(
+#             "bio_ppl",
+#             "bio_ppl_co2scr",
+#             group,
+#             inpfilter=inpfilter,
+#             units=units,
+#             _Frac=_Frac,
+#         )
+#         + _pe_elec_po_turb(
+#             "bio_istig",
+#             group,
+#             units,
+#             _Frac,
+#             inpfilter=inpfilter,
+#             outfilter={"commodity": "electr"},
+#         )
+#         + _out_div_eff(["h2_bio", "eth_bio", "liq_bio"], group, inpfilter, outfilter)
+#     )
+
+#     vars["Electricity|Biomass|w/o CCS"] = (
+#         _Direct_ele_bio_woCCS
+#         + _Cooling_ele_bio_woCCS
+#         + (_Direct_ele_gas_woCCS + _Cooling_ele_gas_woCCS) * _BGas_share
+#     )
+
+#     # -----------------------------
+#     # Water use for electricity oil
+#     # -----------------------------
+
+#     _Cooling_ele_oil = (
+#         _oil_ot_fresh_wo_CCS + _oil_cl_fresh_wo_CCS + _oil_ot_saline_wo_CCS + _oil_air
+#     )
+
+#     _Direct_ele_oil = (
+#         _pe_elec_po_turb(
+#             "foil_ppl",
+#             group,
+#             units,
+#             _Frac,
+#             inpfilter=inpfilter,
+#             outfilter={"commodity": "electr"},
+#         )
+#         + _pe_elec_po_turb(
+#             "loil_ppl",
+#             group,
+#             units,
+#             _Frac,
+#             inpfilter=inpfilter,
+#             outfilter={"commodity": "electr"},
+#         )
+#         + _pe_elec_po_turb(
+#             "oil_ppl",
+#             group,
+#             units,
+#             _Frac,
+#             inpfilter=inpfilter,
+#             outfilter={"commodity": "electr"},
+#         )
+#         + _pe_elec_po_turb(
+#             "loil_cc",
+#             group,
+#             units,
+#             _Frac,
+#             inpfilter=inpfilter,
+#             outfilter={"commodity": "electr"},
+#         )
+#     )
+
+#     vars["Electricity|Oil"] = _Direct_ele_oil + _Cooling_ele_oil
+
+#     # ------------------------------------
+#     # Water use for electricity geothermal
+#     # ------------------------------------
+
+#     _Cooling_ele_geo = (
+#         _geo_ot_fresh_wo_CCS + _geo_cl_fresh_wo_CCS + _geo_ot_saline_wo_CCS + _geo_air
+#     )
+
+#     _Direct_ele_geo = _pe_elec_po_turb(
+#         "geo_ppl",
+#         group,
+#         units,
+#         _Frac,
+#         inpfilter=inpfilter,
+#         outfilter={"commodity": "electr"},
+#     )
+
+#     vars["Electricity|Geothermal"] = _Direct_ele_geo + _Cooling_ele_geo
+
+#     # ------------------------------------
+#     # Water use for electricity hydropower
+#     # ------------------------------------
+
+#     # Note Wenji 03.05.2017: Hydropower uses a different commodity than the
+#     # other technologies.
+
+#     vars["Electricity|Hydro"] = pp.inp(
+#         ["hydro_lc", "hydro_hc"],
+#         units,
+#         inpfilter={"level": ["water_supply"], "commodity": ["freshwater_instream"]},
+#     )
+
+#     # ---------------------------------
+#     # Water use for electricity nuclear
+#     # ---------------------------------
+
+#     _Cooling_ele_nuc = (
+#         _nuc_ot_fresh_wo_CCS + _nuc_cl_fresh_wo_CCS + _nuc_ot_saline_wo_CCS
+#     )
+
+#     _Direct_ele_nuc = (
+#         _pe_elec_po_turb(
+#             "nuc_lc",
+#             group,
+#             units,
+#             _Frac,
+#             inpfilter=inpfilter,
+#             outfilter={"commodity": "electr"},
+#         )
+#         + _pe_elec_po_turb(
+#             "nuc_hc",
+#             group,
+#             units,
+#             _Frac,
+#             inpfilter=inpfilter,
+#             outfilter={"commodity": "electr"},
+#         )
+#         + _pe_elec_po_turb(
+#             "nuc_fbr",
+#             group,
+#             units,
+#             _Frac,
+#             inpfilter=inpfilter,
+#             outfilter={"commodity": "electr"},
+#         )
+#     )
+
+#     vars["Electricity|Nuclear"] = _Direct_ele_nuc + _Cooling_ele_nuc
+
+#     # ------------------------------
+#     # Water use for electricity wind
+#     # ------------------------------
+
+#     # Note Wenji 02.05.2017: In the GDX file it seems that these technologies
+#     # have no input
+
+#     Wind_onshore = pp.inp(
+#         [
+#             "wind_res1",
+#             "wind_res2",
+#             "wind_res3",
+#             "wind_res4",
+#             "wind_res_hist_2005",
+#             "wind_res_hist_2010",
+#             "wind_res_hist_2015",
+#             "wind_res_hist_2020",
+#         ],
+#         units,
+#         inpfilter=inpfilter,
+#     )
+
+#     Wind_offshore = pp.inp(
+#         [
+#             "wind_ref1",
+#             "wind_ref2",
+#             "wind_ref3",
+#             "wind_ref4",
+#             "wind_ref5",
+#             "wind_ref_hist_2005",
+#             "wind_ref_hist_2010",
+#             "wind_ref_hist_2015",
+#             "wind_ref_hist_2020",
+#         ],
+#         units,
+#         inpfilter=inpfilter,
+#     )
+
+#     vars["Electricity|Wind"] = Wind_onshore + Wind_offshore
+
+#     # -------------------------------
+#     # Water use for electricity solar
+#     # -------------------------------
+
+#     _Cooling_ele_solar_th = (
+#         _solar_ot_fresh_wo_CCS
+#         + _solar_cl_fresh_wo_CCS
+#         + _solar_ot_saline_wo_CCS
+#         + _solar_air
+#     )
+
+#     _Direct_ele_solar_th = pp.inp(
+#         [
+#             "solar_th_ppl",
+#             "csp_sm1_res",
+#             "csp_sm1_res1",
+#             "csp_sm1_res2",
+#             "csp_sm1_res3",
+#             "csp_sm1_res4",
+#             "csp_sm1_res5",
+#             "csp_sm1_res6",
+#             "csp_sm1_res7",
+#             "csp_res_hist_2005",
+#             "csp_res_hist_2010",
+#             "csp_res_hist_2015",
+#             "csp_res_hist_2020",
+#             "csp_sm3_res",
+#             "csp_sm3_res1",
+#             "csp_sm3_res2",
+#             "csp_sm3_res3",
+#             "csp_sm3_res4",
+#             "csp_sm3_res5",
+#             "csp_sm3_res6",
+#             "csp_sm3_res7",
+#         ],
+#         units,
+#         inpfilter=inpfilter,
+#     )
+
+#     vars["Electricity|Solar|CSP"] = _Direct_ele_solar_th + _Cooling_ele_solar_th
+
+#     # Note Wenji 02.05.2017: In the GDX file it seems that these technologies
+#     # have no input
+
+#     vars["Electricity|Solar|PV"] = pp.inp(
+#         [
+#             "solar_res1",
+#             "solar_res2",
+#             "solar_res3",
+#             "solar_res4",
+#             "solar_res5",
+#             "solar_res6",
+#             "solar_res7",
+#             "solar_res8",
+#             "solar_pv_I",
+#             "solar_pv_RC",
+#             "solar_res_hist_2005",
+#             "solar_res_hist_2010",
+#             "solar_res_hist_2015",
+#             "solar_res_hist_2020",
+#         ],
+#         units,
+#         inpfilter=inpfilter,
+#     )
+
+#     vars["Electricity|Other"] = pp.inp(
+#         ["h2_fc_trp", "h2_fc_I", "h2_fc_RC"], units, inpfilter=inpfilter
+#     )
+
+#     vars["Electricity|Dry Cooling"] = (
+#         _gas_air + _coal_air + _oil_air + _bio_air + _geo_air + _solar_air
+#     )
+
+#     vars["Electricity|Once Through"] = (
+#         _gas_ot_fresh_wo_CCS
+#         + _gas_ot_fresh_w_CCS
+#         + _coal_ot_fresh_wo_CCS
+#         + _coal_ot_fresh_w_CCS
+#         + _oil_ot_fresh_wo_CCS
+#         + _bio_ot_fresh_wo_CCS
+#         + _bio_ot_fresh_w_CCS
+#         + _geo_ot_fresh_wo_CCS
+#         + _nuc_ot_fresh_wo_CCS
+#         + _solar_ot_fresh_wo_CCS
+#     )
+
+#     vars["Electricity|Sea Cooling"] = (
+#         _gas_ot_saline_wo_CCS
+#         + _gas_ot_saline_w_CCS
+#         + _coal_ot_saline_wo_CCS
+#         + _coal_ot_saline_w_CCS
+#         + _oil_ot_saline_wo_CCS
+#         + _bio_ot_saline_wo_CCS
+#         + _bio_ot_saline_w_CCS
+#         + _geo_ot_saline_wo_CCS
+#         + _nuc_ot_saline_wo_CCS
+#         + _solar_ot_saline_wo_CCS
+#     )
+
+#     vars["Electricity|Wet Tower"] = (
+#         _gas_cl_fresh_wo_CCS
+#         + _gas_cl_fresh_w_CCS
+#         + _coal_cl_fresh_wo_CCS
+#         + _coal_cl_fresh_w_CCS
+#         + _oil_cl_fresh_wo_CCS
+#         + _bio_cl_fresh_wo_CCS
+#         + _bio_cl_fresh_w_CCS
+#         + _geo_cl_fresh_wo_CCS
+#         + _nuc_cl_fresh_wo_CCS
+#         + _solar_cl_fresh_wo_CCS
+#     )
+
+#     # ----------
+#     # Extraction
+#     # ----------
+
+#     vars["Extraction|Coal"] = pp.inp(
+#         ["coal_extr", "coal_extr_ch4", "lignite_extr"], units, inpfilter=inpfilter
+#     )
+
+#     vars["Extraction|Gas"] = pp.inp(
+#         [
+#             "gas_extr_1",
+#             "gas_extr_2",
+#             "gas_extr_3",
+#             "gas_extr_4",
+#             "gas_extr_5",
+#             "gas_extr_6",
+#             "gas_extr_7",
+#             "gas_extr_8",
+#         ],
+#         units,
+#         inpfilter=inpfilter,
+#     )
+
+#     vars["Extraction|Oil"] = pp.inp(
+#         [
+#             "oil_extr_1",
+#             "oil_extr_2",
+#             "oil_extr_3",
+#             "oil_extr_4",
+#             "oil_extr_5",
+#             "oil_extr_6",
+#             "oil_extr_7",
+#             "oil_extr_8",
+#             "oil_extr_1_ch4",
+#             "oil_extr_2_ch4",
+#             "oil_extr_3_ch4",
+#             "oil_extr_4_ch4",
+#         ],
+#         units,
+#         inpfilter=inpfilter,
+#     )
+
+#     vars["Extraction|Uranium"] = pp.inp("Uran_extr", units, inpfilter=inpfilter)
+
+#     if method == "consumption":
+#         vars["Extraction|Coal"] -= pp.act_emif(
+#             ["coal_extr", "coal_extr_ch4", "lignite_extr"],
+#             units=units,
+#             emiffilter=emiffilter,
+#         )
+
+#         vars["Extraction|Gas"] -= pp.act_emif(
+#             [
+#                 "gas_extr_1",
+#                 "gas_extr_2",
+#                 "gas_extr_3",
+#                 "gas_extr_4",
+#                 "gas_extr_5",
+#                 "gas_extr_6",
+#                 "gas_extr_7",
+#                 "gas_extr_8",
+#             ],
+#             units=units,
+#             emiffilter=emiffilter,
+#         )
+
+#         vars["Extraction|Oil"] -= pp.act_emif(
+#             [
+#                 "oil_extr_1",
+#                 "oil_extr_2",
+#                 "oil_extr_3",
+#                 "oil_extr_4",
+#                 "oil_extr_5",
+#                 "oil_extr_6",
+#                 "oil_extr_7",
+#                 "oil_extr_8",
+#                 "oil_extr_1_ch4",
+#                 "oil_extr_2_ch4",
+#                 "oil_extr_3_ch4",
+#                 "oil_extr_4_ch4",
+#             ],
+#             units=units,
+#             emiffilter=emiffilter,
+#         )
+
+#         vars["Extraction|Uranium"] -= pp.act_emif(
+#             "Uran_extr", units=units, emiffilter=emiffilter
+#         )
+
+#     # -----
+#     # Gases
+#     # -----
+
+#     vars["Gases|Biomass"] = pp.inp("gas_bio", units, inpfilter=inpfilter)
+
+#     vars["Gases|Coal"] = pp.inp("coal_gas", units, inpfilter=inpfilter)
+
+#     if method == "consumption":
+#         vars["Gases|Biomass"] -= pp.act_emif(
+#             "gas_bio", units=units, emiffilter=emiffilter
+#         )
+
+#         vars["Gases|Coal"] -= pp.act_emif(
+#             "coal_gas", units=units, emiffilter=emiffilter
+#         )
+
+#     # ----
+#     # Heat
+#     # ----
+
+#     _Cooling_heat_gas = pp.inp(
+#         [
+#             "gas_hpl__ot_fresh",
+#             "gas_hpl__cl_fresh",
+#             "gas_hpl__ot_saline",
+#             "gas_hpl__air",
+#         ],
+#         units,
+#         inpfilter=inpfilter,
+#     )
+
+#     _Direct_heat_gas = pp.inp("gas_hpl", units, inpfilter=inpfilter)
+
+#     vars["Heat|Gas"] = _Cooling_heat_gas + _Direct_heat_gas
+
+#     _Cooling_heat_geo = pp.inp(
+#         [
+#             "geo_hpl__ot_fresh",
+#             "geo_hpl__cl_fresh",
+#             "geo_hpl__ot_saline",
+#             "geo_hpl__air",
+#         ],
+#         units,
+#         inpfilter=inpfilter,
+#     )
+
+#     _Direct_heat_geo = pp.inp("geo_hpl", units, inpfilter=inpfilter)
+
+#     vars["Heat|Geothermal"] = _Cooling_heat_geo + _Direct_heat_geo
+
+#     _Cooling_heat_bio = pp.inp(
+#         [
+#             "bio_hpl__ot_fresh",
+#             "bio_hpl__cl_fresh",
+#             "bio_hpl__ot_saline",
+#             "bio_hpl__air",
+#         ],
+#         units,
+#         inpfilter=inpfilter,
+#     )
+
+#     _Direct_heat_bio = pp.inp("bio_hpl", units, inpfilter=inpfilter)
+
+#     vars["Heat|Biomass"] = _Cooling_heat_bio + _Direct_heat_bio
+
+#     vars["Heat|Coal"] = pp.inp("coal_hpl", units, inpfilter=inpfilter)
+
+#     _Cooling_heat_oil = pp.inp(
+#         [
+#             "foil_hpl__ot_fresh",
+#             "foil_hpl__cl_fresh",
+#             "foil_hpl__ot_saline",
+#             "foil_hpl__air",
+#         ],
+#         units,
+#         inpfilter=inpfilter,
+#     )
+
+#     _Direct_heat_oil = pp.inp("foil_hpl", units, inpfilter=inpfilter)
+
+#     vars["Heat|Oil"] = _Cooling_heat_oil + _Direct_heat_oil
+
+#     vars["Heat|Other"] = pp.inp("po_turbine", units, inpfilter=inpfilter)
+
+#     if method == "consumption":
+#         vars["Heat|Gas"] = vars["Heat|Gas"] - pp.act_emif(
+#             [
+#                 "gas_hpl__ot_fresh",
+#                 "gas_hpl__cl_fresh",
+#                 "gas_hpl__ot_saline",
+#                 "gas_hpl__air",
+#             ],
+#             units=units,
+#             emiffilter=emiffilter,
+#         )
+
+#         vars["Heat|Geothermal"] -= pp.act_emif(
+#             [
+#                 "geo_hpl__ot_fresh",
+#                 "geo_hpl__cl_fresh",
+#                 "geo_hpl__ot_saline",
+#                 "geo_hpl__air",
+#             ],
+#             units=units,
+#             emiffilter=emiffilter,
+#         )
+
+#         vars["Heat|Biomass"] -= pp.act_emif(
+#             [
+#                 "bio_hpl__ot_fresh",
+#                 "bio_hpl__cl_fresh",
+#                 "bio_hpl__ot_saline",
+#                 "bio_hpl__air",
+#             ],
+#             units=units,
+#             emiffilter=emiffilter,
+#         )
+
+#         vars["Heat|Coal"] -= pp.act_emif("coal_hpl", units=units, emiffilter=emiffilter)
+
+#         vars["Heat|Oil"] -= pp.act_emif(
+#             [
+#                 "foil_hpl__ot_fresh",
+#                 "foil_hpl__cl_fresh",
+#                 "foil_hpl__ot_saline",
+#                 "foil_hpl__air",
+#             ],
+#             units=units,
+#             emiffilter=emiffilter,
+#         )
+
+#         vars["Heat|Other"] -= pp.act_emif(
+#             "po_turbine", units=units, emiffilter=emiffilter
+#         )
+
+#     # --------
+#     # Hydrogen
+#     # --------
+
+#     hydrogen_outputfilter = {"level": ["secondary"], "commodity": ["hydrogen"]}
+
+#     vars["Hydrogen|Biomass|w/ CCS"] = _out_div_eff(
+#         "h2_bio_ccs", group, inpfilter, hydrogen_outputfilter
+#     )
+
+#     vars["Hydrogen|Biomass|w/o CCS"] = _out_div_eff(
+#         "h2_bio", group, inpfilter, hydrogen_outputfilter
+#     )
+
+#     vars["Hydrogen|Coal|w/ CCS"] = _out_div_eff(
+#         "h2_coal_ccs", group, inpfilter, hydrogen_outputfilter
+#     )
+
+#     vars["Hydrogen|Coal|w/o CCS"] = _out_div_eff(
+#         "h2_coal", group, inpfilter, hydrogen_outputfilter
+#     )
+
+#     vars["Hydrogen|Gas|w/ CCS"] = _out_div_eff(
+#         "h2_smr_ccs", group, inpfilter, hydrogen_outputfilter
+#     )
+
+#     vars["Hydrogen|Gas|w/o CCS"] = _out_div_eff(
+#         "h2_smr", group, inpfilter, hydrogen_outputfilter
+#     )
+
+#     vars["Hydrogen|Electricity"] = _out_div_eff(
+#         "h2_elec", group, inpfilter, hydrogen_outputfilter
+#     )
+
+#     if method == "consumption":
+#         vars["Hydrogen|Biomass|w/ CCS"] -= pp.act_emif(
+#             "h2_bio_ccs", units=units, emiffilter=emiffilter
+#         )
+
+#         vars["Hydrogen|Biomass|w/o CCS"] -= pp.act_emif(
+#             "h2_bio", units=units, emiffilter=emiffilter
+#         )
+
+#         vars["Hydrogen|Coal|w/ CCS"] -= pp.act_emif(
+#             "h2_coal_ccs", units=units, emiffilter=emiffilter
+#         )
+
+#         vars["Hydrogen|Coal|w/o CCS"] -= pp.act_emif(
+#             "h2_coal", units=units, emiffilter=emiffilter
+#         )
+
+#         vars["Hydrogen|Gas|w/ CCS"] -= pp.act_emif(
+#             "h2_smr_ccs", units=units, emiffilter=emiffilter
+#         )
+
+#         vars["Hydrogen|Gas|w/o CCS"] -= pp.act_emif(
+#             "h2_smr", units=units, emiffilter=emiffilter
+#         )
+
+#         vars["Hydrogen|Electricity"] -= pp.act_emif(
+#             "h2_elec", units=units, emiffilter=emiffilter
+#         )
+
+#     # --------------------
+#     # Irrigation water use
+#     # --------------------
+
+#     vars["Irrigation"] = (
+#         pp.land_out(
+#             lu_out_filter={
+#                 "level": ["land_use_reporting"],
+#                 "commodity": ["Water|Withdrawal|Irrigation"],
+#             }
+#         )
+#         * 0.001
+#     )
+
+#     vars["Irrigation|Cereals"] = (
+#         pp.land_out(
+#             lu_out_filter={
+#                 "level": ["land_use_reporting"],
+#                 "commodity": ["Water|Withdrawal|Irrigation|Cereals"],
+#             }
+#         )
+#         * 0.001
+#     )
+
+#     vars["Irrigation|Oilcrops"] = (
+#         pp.land_out(
+#             lu_out_filter={
+#                 "level": ["land_use_reporting"],
+#                 "commodity": ["Water|Withdrawal|Irrigation|Oilcrops"],
+#             }
+#         )
+#         * 0.001
+#     )
+
+#     vars["Irrigation|Sugarcrops"] = (
+#         pp.land_out(
+#             lu_out_filter={
+#                 "level": ["land_use_reporting"],
+#                 "commodity": ["Water|Withdrawal|Irrigation|Sugarcrops"],
+#             }
+#         )
+#         * 0.001
+#     )
+
+#     if method == "consumption":
+#         vars["Irrigation"] = pp_utils._make_zero()
+#         vars["Irrigation|Cereals"] = pp_utils._make_zero()
+#         vars["Irrigation|Oilcrops"] = pp_utils._make_zero()
+#         vars["Irrigation|Sugarcrops"] = pp_utils._make_zero()
+
+#     # -----------
+#     # Bio ethanol
+#     # -----------
+
+#     bio_liquid_outfilter = {"level": ["primary"], "commodity": ["ethanol"]}
+
+#     vars["Liquids|Biomass|w/ CCS"] = _out_div_eff(
+#         ["eth_bio_ccs", "liq_bio_ccs"], group, inpfilter, bio_liquid_outfilter
+#     )
+
+#     vars["Liquids|Biomass|w/o CCS"] = _out_div_eff(
+#         ["eth_bio", "liq_bio"], group, inpfilter, bio_liquid_outfilter
+#     )
+
+#     if method == "consumption":
+#         vars["Liquids|Biomass|w/ CCS"] -= pp.act_emif(
+#             ["eth_bio_ccs", "liq_bio_ccs"], units=units, emiffilter=emiffilter
+#         )
+
+#         vars["Liquids|Biomass|w/o CCS"] -= pp.act_emif(
+#             ["eth_bio", "liq_bio"], units=units, emiffilter=emiffilter
+#         )
+
+#     # ---------------------------
+#     # Synthetic liquids from coal
+#     # ---------------------------
+
+#     # Note OFR 20210731: The filter below seems to be incorrect and hence was
+#     # corrected.
+#     # syn_liquid_outfilter = {"level": ["primary"],
+#     #                         "commodity": ["methanol"]}
+
+#     syn_liquid_outfilter = {
+#         "level": ["secondary"],
+#         "commodity": ["methanol", "lightoil"],
+#     }
+
+#     vars["Liquids|Coal|w/ CCS"] = _out_div_eff(
+#         ["meth_coal_ccs", "syn_liq_ccs"], group, inpfilter, syn_liquid_outfilter
+#     )
+
+#     vars["Liquids|Coal|w/o CCS"] = _out_div_eff(
+#         ["meth_coal", "syn_liq"], group, inpfilter, syn_liquid_outfilter
+#     )
+
+#     vars["Liquids|Gas|w/ CCS"] = _out_div_eff(
+#         ["meth_ng_ccs"], group, inpfilter, syn_liquid_outfilter
+#     )
+
+#     vars["Liquids|Gas|w/o CCS"] = _out_div_eff(
+#         ["meth_ng"], group, inpfilter, syn_liquid_outfilter
+#     )
+
+#     if method == "consumption":
+#         vars["Liquids|Coal|w/ CCS"] -= pp.act_emif(
+#             ["meth_coal_ccs", "syn_liq_ccs"], units=units, emiffilter=emiffilter
+#         )
+
+#         vars["Liquids|Coal|w/o CCS"] -= pp.act_emif(
+#             ["meth_coal", "syn_liq"], units=units, emiffilter=emiffilter
+#         )
+
+#         vars["Liquids|Gas|w/ CCS"] -= pp.act_emif(
+#             "meth_ng_ccs", units=units, emiffilter=emiffilter
+#         )
+
+#         vars["Liquids|Gas|w/o CCS"] -= pp.act_emif(
+#             "meth_ng", units=units, emiffilter=emiffilter
+#         )
+
+#     # ----------
+#     # Refineries
+#     # ----------
+
+#     loil_filter = {"level": ["secondary"], "commodity": ["lightoil"]}
+#     foil_filter = {"level": ["secondary"], "commodity": ["fueloil"]}
+
+#     vars["Liquids|Oil"] = _out_div_eff(
+#         ["ref_lol", "ref_hil"], group, inpfilter, loil_filter
+#     ) + _out_div_eff(["ref_lol", "ref_hil"], group, inpfilter, foil_filter)
+
+#     if method == "consumption":
+#         vars["Liquids|Oil"] -= pp.act_emif(
+#             ["ref_lol", "ref_hil"], units=units, emiffilter=emiffilter
+#         )
+
+#     df = pp_utils.make_outputdf(vars, units)
+#     return df
+
