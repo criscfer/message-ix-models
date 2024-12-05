@@ -450,3 +450,6 @@ def report(
     #            df.iloc[index, col] = df.iloc[index, col] * -1
                 
     pp_utils.write_xlsx(df, out_dir)
+    
+    # Return the reeport as a dataframe
+    return df
